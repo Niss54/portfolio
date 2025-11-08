@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Award, Briefcase, Users, Calendar } from "lucide-react";
+import certSoftflew from "@/assets/cert-softflew.png";
+import certAws from "@/assets/cert-aws.png";
+import certHackshastra from "@/assets/cert-hackshastra.png";
+import certIntel from "@/assets/cert-intel.png";
+import certInternai from "@/assets/cert-internai.png";
 
 const CertificationsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,27 +20,27 @@ const CertificationsSection = () => {
   const certifications = [
     {
       name: "SOFTFLEW Technologies",
-      image: "/src/assets/cert-softflew.png",
+      image: certSoftflew,
       description: "Python with Data Science - 41 Days Summer Training",
     },
     {
       name: "AWS Solutions Architecture",
-      image: "/src/assets/cert-aws.png",
+      image: certAws,
       description: "Solutions Architecture Job Simulation via Forage",
     },
     {
       name: "HackShastra",
-      image: "/src/assets/cert-hackshastra.png",
+      image: certHackshastra,
       description: "Round 1 Idea Submission - Team Red Shade",
     },
     {
       name: "Intel AI for Entrepreneurship",
-      image: "/src/assets/cert-intel.png",
+      image: certIntel,
       description: "Skill India Digital Hub - AI for Entrepreneurship",
     },
     {
       name: "InternAI Assistant",
-      image: "/src/assets/cert-internai.png",
+      image: certInternai,
       description: "AI-Powered Internship Training Program",
     },
   ];

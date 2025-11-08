@@ -5,12 +5,42 @@ import { Button } from "@/components/ui/button";
 const ChatbotWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState<Array<{text: string, isBot: boolean}>>([
+    { text: "Hi! 👋 I'm here to help. What would you like to know about Nishant's services?", isBot: true }
+  ]);
 
   const quickQuestions = [
     "What services do you offer?",
     "How can I hire you?",
     "What's your availability?",
   ];
+
+  const handleSendMessage = (text?: string) => {
+    const messageToSend = text || message;
+    if (!messageToSend.trim()) return;
+
+    // Add user message
+    setMessages(prev => [...prev, { text: messageToSend, isBot: false }]);
+    setMessage("");
+
+    // Simulate bot response
+    setTimeout(() => {
+      let response = "";
+      const lowerMessage = messageToSend.toLowerCase();
+      
+      if (lowerMessage.includes("service")) {
+        response = "I offer Full-Stack Development, AI/ML Solutions, UI/UX Design, and Cloud Architecture services. Would you like to know more about any specific service?";
+      } else if (lowerMessage.includes("hire") || lowerMessage.includes("contact")) {
+        response = "You can reach me at Nishantma05@gmail.com or call/WhatsApp at +91 8840301998. I'm available for freelance projects and collaborations!";
+      } else if (lowerMessage.includes("availab")) {
+        response = "I'm currently available for new projects! Feel free to reach out and let's discuss your requirements.";
+      } else {
+        response = "Thanks for your message! For detailed information, please contact me at Nishantma05@gmail.com or +91 8840301998.";
+      }
+      
+      setMessages(prev => [...prev, { text: response, isBot: true }]);
+    }, 500);
+  };
 
   return (
     <>
@@ -38,29 +68,34 @@ const ChatbotWidget = () => {
 
           {/* Messages Area */}
           <div className="p-4 h-64 overflow-y-auto space-y-3 bg-background/30">
-            <div className="flex gap-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center flex-shrink-0">
-                <MessageCircle className="w-4 h-4 text-foreground" />
+            {messages.map((msg, index) => (
+              <div key={index} className={`flex gap-2 ${msg.isBot ? '' : 'flex-row-reverse'}`}>
+                {msg.isBot && (
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center flex-shrink-0">
+                    <MessageCircle className="w-4 h-4 text-foreground" />
+                  </div>
+                )}
+                <div className={`glass rounded-2xl ${msg.isBot ? 'rounded-tl-none' : 'rounded-tr-none bg-primary/20'} p-3 max-w-[80%]`}>
+                  <p className="text-sm text-foreground">{msg.text}</p>
+                </div>
               </div>
-              <div className="glass rounded-2xl rounded-tl-none p-3 max-w-[80%]">
-                <p className="text-sm text-foreground">
-                  Hi! 👋 I'm here to help. What would you like to know about Nishant's services?
-                </p>
-              </div>
-            </div>
+            ))}
 
             {/* Quick Questions */}
-            <div className="space-y-2">
-              <p className="text-xs text-muted-foreground px-2">Quick questions:</p>
-              {quickQuestions.map((question, index) => (
-                <button
-                  key={index}
-                  className="w-full text-left glass rounded-xl p-2 text-sm hover:bg-primary/10 hover:border-primary/30 border border-primary/10 transition-all"
-                >
-                  {question}
-                </button>
-              ))}
-            </div>
+            {messages.length === 1 && (
+              <div className="space-y-2">
+                <p className="text-xs text-muted-foreground px-2">Quick questions:</p>
+                {quickQuestions.map((question, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleSendMessage(question)}
+                    className="w-full text-left glass rounded-xl p-2 text-sm hover:bg-primary/10 hover:border-primary/30 border border-primary/10 transition-all"
+                  >
+                    {question}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Input Area */}
@@ -70,10 +105,14 @@ const ChatbotWidget = () => {
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 placeholder="Type a message..."
                 className="flex-1 px-4 py-2 bg-background/50 border border-primary/20 rounded-xl focus:outline-none focus:border-primary text-sm"
               />
-              <button className="p-2 bg-gradient-to-r from-primary to-secondary rounded-xl hover:shadow-[0_0_20px_hsl(189_100%_50%/0.5)] transition-all">
+              <button 
+                onClick={() => handleSendMessage()}
+                className="p-2 bg-gradient-to-r from-primary to-secondary rounded-xl hover:shadow-[0_0_20px_hsl(189_100%_50%/0.5)] transition-all"
+              >
                 <Send className="w-5 h-5 text-foreground" />
               </button>
             </div>
