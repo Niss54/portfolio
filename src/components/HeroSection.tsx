@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import profileImage from "@/assets/profile.jpg";
+import profileImage from "@/assets/profile.png";
 
 const HeroSection = () => {
-  const titles = ["Developer", "Engineer", "Founder", "Owner of Limpio", "CEO", "Designer", "Editor", "Content Creator", "AI Expert", "Influencer"];
+  const titles = ["Developer", "Engineer", "Founder", "of Limpio", "CEO", "Designer", "an Editor", "Content Creator", "AI Expert", "an Influencer"];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -16,7 +16,18 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20">
+    <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20 relative">
+      {/* Spline 3D Background */}
+      <div className="fixed top-0 left-0 w-full h-screen overflow-hidden -z-10">
+        <iframe 
+          src='https://my.spline.design/reactiveorb-LBRDkQUVF2OIVdfCuMkdFPdq/' 
+          frameBorder='0'
+          className="w-full h-full border-none"
+          style={{ transform: 'scale(1.45)' }}
+          title="3D Background Animation"
+        />
+      </div>
+      
       <div className="container mx-auto">
         <div className="flex flex-col gap-16">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -70,7 +81,7 @@ const HeroSection = () => {
                 </h1>
                 
                 <div className="flex items-center justify-center lg:justify-start gap-3 text-2xl md:text-4xl font-semibold">
-                  <span className="text-muted-foreground">And I'm a</span>
+                  <span className="text-muted-foreground">And I'm</span>
                   <span 
                     className="text-primary glow-text transition-all duration-500"
                     key={currentTitleIndex}
@@ -80,8 +91,7 @@ const HeroSection = () => {
                 </div>
 
                 <p className="text-lg text-muted-foreground max-w-2xl">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tempus 
-                  venenatis velit, quis egestas sem fermentum id. Aenean blandit id eros sed fringilla.
+                  Building smart, modern, and scalable web experiences that make an impact. Let's turn your idea into reality.
                 </p>
 
                 {/* Social Media Icons */}
