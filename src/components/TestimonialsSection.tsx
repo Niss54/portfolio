@@ -1,34 +1,22 @@
 import { useState, useEffect, useRef } from "react";
-import { Star } from "lucide-react";
+import { Star, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+
+interface Review {
+  id: string;
+  name: string;
+  rating: number;
+  text: string;
+  timestamp: Date;
+}
 
 const TestimonialsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [formData, setFormData] = useState({ name: "", rating: 5, text: "" });
   const sectionRef = useRef<HTMLElement>(null);
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart Inc",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-      rating: 5,
-      text: "Nishant delivered an exceptional web application that exceeded our expectations. His attention to detail and technical expertise are outstanding.",
-    },
-    {
-      name: "Michael Chen",
-      role: "Product Manager, InnovateCo",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-      rating: 5,
-      text: "Working with Nishant was a game-changer for our project. He transformed our vision into a scalable, beautiful product.",
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "Founder, DesignHub",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
-      rating: 5,
-      text: "Incredible work! Nishant's ability to understand complex requirements and deliver elegant solutions is remarkable.",
-    },
-  ];
+  const { toast } = useToast();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,12 +35,34 @@ const TestimonialsSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name.trim() || !formData.text.trim()) {
+      toast({
+        title: "Error",
+        description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const newReview: Review = {
+      id: Date.now().toString(),
+      name: formData.name,
+      rating: formData.rating,
+      text: formData.text,
+      timestamp: new Date(),
+    };
+
+    setReviews([newReview, ...reviews]);
+    setFormData({ name: "", rating: 5, text: "" });
+    
+    toast({
+      title: "Thank you!",
+      description: "Your review has been submitted.",
+    });
+  };
 
   return (
     <section ref={sectionRef} className="py-20 px-6 relative overflow-hidden">
@@ -62,77 +72,109 @@ const TestimonialsSection = () => {
       <div className="container mx-auto relative">
         <div className="text-center mb-16">
           <h2 className={`text-4xl md:text-5xl font-bold glow-text mb-4 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-            Client Testimonials
+            Client Reviews
           </h2>
           <div className={`w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 ${isVisible ? 'animate-slide-up delay-100' : 'opacity-0'}`} />
           <p className={`text-muted-foreground text-lg ${isVisible ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
-            What clients say about working with me
+            Share your experience working with me
           </p>
         </div>
 
-        {/* Testimonial Cards Carousel */}
-        <div className="relative max-w-4xl mx-auto">
-          <div className="relative overflow-hidden">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={testimonial.name}
-                className={`transition-all duration-700 ${
-                  index === currentIndex 
-                    ? 'opacity-100 translate-x-0 relative' 
-                    : 'opacity-0 absolute inset-0 translate-x-full'
-                }`}
-              >
-                <div className="glass-strong rounded-3xl p-8 md:p-12 border-2 border-primary/20 glow-border">
-                  {/* Stars Rating */}
-                  <div className="flex justify-center gap-1 mb-6">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star 
-                        key={i} 
-                        className="w-6 h-6 fill-primary text-primary"
+        {/* Rating Form */}
+        <div className={`max-w-2xl mx-auto mb-12 ${isVisible ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
+          <div className="glass-strong rounded-3xl p-8 border-2 border-primary/20 glow-border">
+            <h3 className="text-2xl font-bold mb-6 glow-text">Leave a Review</h3>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="text-sm font-medium mb-2 block">Your Name</label>
+                <input
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full px-4 py-3 bg-background/50 border-2 border-primary/20 rounded-xl focus:outline-none focus:border-primary focus:shadow-[0_0_20px_hsl(189_100%_50%/0.4)] transition-all"
+                  placeholder="Enter your name"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm font-medium mb-2 block">Rating</label>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <button
+                      key={star}
+                      type="button"
+                      onClick={() => setFormData({ ...formData, rating: star })}
+                      className="transition-transform hover:scale-110"
+                    >
+                      <Star
+                        className={`w-8 h-8 ${
+                          star <= formData.rating
+                            ? 'fill-primary text-primary'
+                            : 'text-muted-foreground'
+                        }`}
                       />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="text-sm font-medium mb-2 block">Your Review</label>
+                <textarea
+                  value={formData.text}
+                  onChange={(e) => setFormData({ ...formData, text: e.target.value })}
+                  rows={4}
+                  className="w-full px-4 py-3 bg-background/50 border-2 border-primary/20 rounded-xl focus:outline-none focus:border-primary focus:shadow-[0_0_20px_hsl(189_100%_50%/0.4)] transition-all resize-none"
+                  placeholder="Share your experience..."
+                />
+              </div>
+
+              <Button type="submit" variant="hero" size="lg" className="w-full">
+                <Send className="w-5 h-5 mr-2" />
+                Submit Review
+              </Button>
+            </form>
+          </div>
+        </div>
+
+        {/* Reviews Display */}
+        {reviews.length > 0 && (
+          <div className="max-w-4xl mx-auto space-y-6">
+            <h3 className="text-2xl font-bold text-center mb-8 glow-text">Recent Reviews</h3>
+            {reviews.map((review, index) => (
+              <div
+                key={review.id}
+                className={`glass-strong rounded-2xl p-6 border border-primary/20 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] transition-all duration-300 ${
+                  isVisible ? 'animate-slide-up' : 'opacity-0'
+                }`}
+                style={{ animationDelay: `${400 + index * 100}ms` }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h4 className="text-lg font-semibold text-foreground">{review.name}</h4>
+                    <p className="text-sm text-muted-foreground">
+                      {review.timestamp.toLocaleDateString()}
+                    </p>
+                  </div>
+                  <div className="flex gap-1">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-primary text-primary" />
                     ))}
                   </div>
-
-                  {/* Testimonial Text */}
-                  <p className="text-lg md:text-xl text-foreground text-center leading-relaxed mb-8 italic">
-                    "{testimonial.text}"
-                  </p>
-
-                  {/* Client Info */}
-                  <div className="flex items-center justify-center gap-4">
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-primary blur-lg opacity-50 rounded-full" />
-                      <img 
-                        src={testimonial.avatar} 
-                        alt={testimonial.name}
-                        className="relative w-16 h-16 rounded-full border-2 border-primary/50 object-cover"
-                      />
-                    </div>
-                    <div className="text-left">
-                      <h4 className="text-lg font-semibold text-foreground">{testimonial.name}</h4>
-                      <p className="text-muted-foreground text-sm">{testimonial.role}</p>
-                    </div>
-                  </div>
                 </div>
+                <p className="text-foreground leading-relaxed">{review.text}</p>
               </div>
             ))}
           </div>
+        )}
 
-          {/* Carousel Indicators */}
-          <div className="flex justify-center gap-2 mt-8">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'w-8 bg-primary shadow-[0_0_10px_hsl(189_100%_50%)]' 
-                    : 'w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-              />
-            ))}
+        {reviews.length === 0 && (
+          <div className={`text-center ${isVisible ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
+            <p className="text-muted-foreground text-lg">
+              Be the first to leave a review!
+            </p>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

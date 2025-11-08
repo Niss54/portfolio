@@ -14,26 +14,14 @@ import LoadingScreen from "@/components/LoadingScreen";
 import ChatbotWidget from "@/components/ChatbotWidget";
 
 const Index = () => {
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     // Enable smooth scrolling
     document.documentElement.style.scrollBehavior = "smooth";
-    
-    // Simulate loading
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
 
     return () => {
-      clearTimeout(timer);
       document.documentElement.style.scrollBehavior = "auto";
     };
   }, []);
-
-  if (loading) {
-    return <LoadingScreen />;
-  }
 
   return (
     <div className="relative min-h-screen overflow-hidden">

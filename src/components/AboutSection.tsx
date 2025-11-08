@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Code, Database, Globe, Server } from "lucide-react";
-import profileImage from "@/assets/profile.jpg";
+import profileImage from "@/assets/about-profile.png";
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);

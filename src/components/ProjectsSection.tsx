@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
+import projectJeevansos from "@/assets/project-jeevansos.png";
+import projectNeurosense from "@/assets/project-neurosense.png";
+import projectLimpio from "@/assets/project-limpio.png";
+import projectInternai from "@/assets/project-internai.png";
 
 const ProjectsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -8,34 +12,34 @@ const ProjectsSection = () => {
 
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with real-time inventory management and payment integration.",
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
+      title: "JeevanSOS",
+      description: "Urgent blood request platform connecting donors with those in need during medical emergencies.",
+      image: projectJeevansos,
+      tags: ["React", "Node.js", "Real-time", "Healthcare"],
       demo: "#",
       github: "#",
     },
     {
-      title: "AI Dashboard Analytics",
-      description: "Advanced analytics dashboard with AI-powered insights and real-time data visualization.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      tags: ["TypeScript", "React", "Python", "TensorFlow"],
+      title: "NeuroSense AI",
+      description: "Real-time emotion and cognitive load tracker with privacy-first, on-device intelligence.",
+      image: projectNeurosense,
+      tags: ["AI", "React", "Machine Learning", "Privacy"],
       demo: "#",
       github: "#",
     },
     {
-      title: "Social Media App",
-      description: "Modern social platform with real-time messaging, stories, and advanced privacy controls.",
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&h=400&fit=crop",
-      tags: ["React Native", "Node.js", "Socket.io", "AWS"],
+      title: "Limpio - The Soul Cleaner",
+      description: "Premium floor cleaner e-commerce platform made in India with top-quality ingredients.",
+      image: projectLimpio,
+      tags: ["E-commerce", "React", "Node.js", "Shopify"],
       demo: "#",
       github: "#",
     },
     {
-      title: "Blockchain Wallet",
-      description: "Secure cryptocurrency wallet with multi-chain support and DeFi integration.",
-      image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&h=400&fit=crop",
-      tags: ["Web3.js", "Solidity", "React", "Ethereum"],
+      title: "InternAI",
+      description: "Smart internship finder platform powered by AI to match candidates with opportunities.",
+      image: projectInternai,
+      tags: ["AI", "React", "Node.js", "MongoDB"],
       demo: "#",
       github: "#",
     },

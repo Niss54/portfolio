@@ -1,5 +1,6 @@
 import { Github, Linkedin, Instagram, Youtube, ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -40,7 +41,7 @@ const Footer = () => {
           <div className="grid md:grid-cols-3 gap-12 mb-12">
             {/* Brand Section */}
             <div className="space-y-4">
-              <h3 className="text-3xl font-bold glow-text">NM</h3>
+              <img src={logo} alt="Niss Visuals" className="h-12 w-auto" />
               <p className="text-muted-foreground">
                 Building digital experiences that make a difference. Developer, Engineer, and Founder.
               </p>

@@ -87,7 +87,7 @@ const ContactSection = () => {
     {
       icon: MessageCircle,
       label: "WhatsApp",
-      href: "https://wa.me/15551234567",
+      href: "https://wa.me/918840301998",
       color: "from-green-500 to-emerald-400",
     },
   ];
@@ -198,22 +198,8 @@ const ContactSection = () => {
             </form>
           </div>
 
-          {/* Map & Contact Info */}
+          {/* Contact Info */}
           <div className={`space-y-6 ${isVisible ? 'animate-slide-up delay-600' : 'opacity-0'}`}>
-            {/* Embedded Map */}
-            <div className="glass-strong rounded-3xl overflow-hidden border-2 border-primary/20 h-64">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d-122.41941668468208!3d37.77492977975903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="opacity-80"
-              />
-            </div>
-
             {/* Quick Contact Cards */}
             <div className="space-y-4">
               <div className="glass-strong rounded-2xl p-5 border border-primary/20 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] transition-all duration-300">
@@ -223,7 +209,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm text-muted-foreground">Email</h4>
-                    <p className="text-foreground">nishant@example.com</p>
+                    <p className="text-foreground">Nishantma05@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -235,7 +221,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm text-muted-foreground">Phone</h4>
-                    <p className="text-foreground">+1 (555) 123-4567</p>
+                    <p className="text-foreground">+91 8840301998</p>
                   </div>
                 </div>
               </div>
@@ -247,7 +233,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm text-muted-foreground">Location</h4>
-                    <p className="text-foreground">San Francisco, CA</p>
+                    <p className="text-foreground">Lucknow, UP, India</p>
                   </div>
                 </div>
               </div>
