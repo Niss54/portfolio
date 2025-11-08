@@ -10,6 +10,9 @@ const AboutSection = () => {
   const skills = [
     { name: "HTML/CSS", level: 95, icon: Globe, color: "from-primary to-cyan-400" },
     { name: "JavaScript", level: 90, icon: Code, color: "from-secondary to-purple-400" },
+    { name: "React", level: 92, icon: Code, color: "from-primary to-purple-400" },
+    { name: "Python", level: 88, icon: Code, color: "from-secondary to-blue-400" },
+    { name: "SQL", level: 85, icon: Database, color: "from-primary to-green-400" },
     { name: "Node.js", level: 85, icon: Server, color: "from-primary to-blue-400" },
     { name: "MongoDB", level: 88, icon: Database, color: "from-secondary to-indigo-400" },
   ];

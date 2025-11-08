@@ -14,24 +14,29 @@ const CertificationsSection = () => {
 
   const certifications = [
     {
-      name: "Google Cloud",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg",
-      description: "Cloud Architecture",
+      name: "SOFTFLEW Technologies",
+      image: "/src/assets/cert-softflew.png",
+      description: "Python with Data Science - 41 Days Summer Training",
     },
     {
-      name: "MongoDB",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-      description: "Database Expert",
+      name: "AWS Solutions Architecture",
+      image: "/src/assets/cert-aws.png",
+      description: "Solutions Architecture Job Simulation via Forage",
     },
     {
-      name: "AWS",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
-      description: "Solutions Architect",
+      name: "HackShastra",
+      image: "/src/assets/cert-hackshastra.png",
+      description: "Round 1 Idea Submission - Team Red Shade",
     },
     {
-      name: "React",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-      description: "Advanced Development",
+      name: "Intel AI for Entrepreneurship",
+      image: "/src/assets/cert-intel.png",
+      description: "Skill India Digital Hub - AI for Entrepreneurship",
+    },
+    {
+      name: "InternAI Assistant",
+      image: "/src/assets/cert-internai.png",
+      description: "AI-Powered Internship Training Program",
     },
   ];
 
@@ -126,11 +131,11 @@ const CertificationsSection = () => {
                 
                 {/* Logo */}
                 <div className="relative mb-4">
-                  <div className="w-24 h-24 mx-auto flex items-center justify-center bg-background/50 rounded-xl p-4 group-hover:scale-110 transition-transform duration-500">
+                  <div className="w-full h-48 mx-auto flex items-center justify-center bg-background/50 rounded-xl overflow-hidden group-hover:scale-105 transition-transform duration-500">
                     <img 
-                      src={cert.logo} 
+                      src={cert.image} 
                       alt={cert.name}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </div>
