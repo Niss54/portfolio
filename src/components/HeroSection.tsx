@@ -17,17 +17,6 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20 relative">
-      {/* Spline 3D Background */}
-      <div className="fixed top-0 left-0 w-full h-screen overflow-hidden -z-10 pointer-events-auto">
-        <iframe 
-          src='https://my.spline.design/reactiveorb-LBRDkQUVF2OIVdfCuMkdFPdq/' 
-          frameBorder='0'
-          className="w-full h-full border-none"
-          style={{ transform: 'scale(1.45)' }}
-          title="3D Background Animation"
-        />
-      </div>
-      
       <div className="container mx-auto">
         <div className="flex flex-col gap-16">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">

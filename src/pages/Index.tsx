@@ -26,7 +26,8 @@ const Index = () => {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <AnimatedBackground />
-      <Navbar />
+      <div className="relative z-10">
+        <Navbar />
       <HeroSection />
       <AboutSection />
       <ServicesSection />
@@ -37,6 +38,7 @@ const Index = () => {
       <ContactSection />
       <Footer />
       <ChatbotWidget />
+      </div>
     </div>
   );
 };
