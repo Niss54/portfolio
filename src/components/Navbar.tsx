@@ -20,35 +20,42 @@ const Navbar = () => {
     document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled ? "glass-strong shadow-lg" : "glass"
-      }`}
+      } ${theme === "light" ? "bg-white/95 border-b border-gray-200" : ""}`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <img src={logo} alt="Niss Visuals" className="h-12 w-auto" />
           
           <div className="hidden md:flex items-center gap-8">
-            <a href="#home" className="text-muted-foreground hover:text-primary transition-colors">
+            <button onClick={() => scrollToSection('home')} className="text-muted-foreground hover:text-primary transition-colors">
               Home
-            </a>
-            <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button onClick={() => scrollToSection('about')} className="text-muted-foreground hover:text-primary transition-colors">
               About
-            </a>
-            <a href="#skills" className="text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button onClick={() => scrollToSection('skills')} className="text-muted-foreground hover:text-primary transition-colors">
               Skills
-            </a>
-            <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button onClick={() => scrollToSection('services')} className="text-muted-foreground hover:text-primary transition-colors">
               Services
-            </a>
-            <a href="#work" className="text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button onClick={() => scrollToSection('work')} className="text-muted-foreground hover:text-primary transition-colors">
               Portfolio
-            </a>
-            <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button onClick={() => scrollToSection('contact')} className="text-muted-foreground hover:text-primary transition-colors">
               Contact
-            </a>
+            </button>
             
             {/* Theme Toggle */}
             <button

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import profileImage from "@/assets/profile.png";
 
 const HeroSection = () => {
-  const titles = ["Developer", "Engineer", "Founder", "of Limpio", "CEO", "Designer", "an Editor", "Content Creator", "AI Expert", "an Influencer"];
+  const titles = ["Developer", "Engineer", "Founder", "CEO", "Designer", "an Editor", "Content Creator", "AI Expert", "an Influencer"];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -132,10 +132,18 @@ const HeroSection = () => {
 
               {/* CTA Buttons */}
               <div className={`flex flex-wrap gap-4 justify-center lg:justify-start ${isVisible ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
-                <Button variant="hero" size="xl">
+                <Button 
+                  variant="hero" 
+                  size="xl"
+                  onClick={() => window.open('https://wa.me/918840301998', '_blank')}
+                >
                   Hire Me
                 </Button>
-                <Button variant="hero-outline" size="xl">
+                <Button 
+                  variant="hero-outline" 
+                  size="xl"
+                  onClick={() => window.location.href = 'tel:8840301998'}
+                >
                   Contact Me
                 </Button>
               </div>
@@ -146,19 +154,19 @@ const HeroSection = () => {
           <div className={`grid grid-cols-2 lg:grid-cols-4 gap-8 ${isVisible ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
             <div className="text-center space-y-2">
               <div className="text-4xl md:text-5xl font-bold text-primary glow-text">1+</div>
-              <div className="text-sm md:text-base text-muted-foreground">Years of<br />Experience</div>
+              <div className="text-sm md:text-base text-muted-foreground">Year of<br />Experience</div>
             </div>
             <div className="text-center space-y-2">
               <div className="text-4xl md:text-5xl font-bold text-primary glow-text">10+</div>
-              <div className="text-sm md:text-base text-muted-foreground">Projects<br />Completed</div>
-            </div>
-            <div className="text-center space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-primary glow-text">7+</div>
-              <div className="text-sm md:text-base text-muted-foreground">Technologies<br />Mastered</div>
+              <div className="text-sm md:text-base text-muted-foreground">Projects<br />Done</div>
             </div>
             <div className="text-center space-y-2">
               <div className="text-4xl md:text-5xl font-bold text-primary glow-text">10+</div>
-              <div className="text-sm md:text-base text-muted-foreground">Clients<br />Satisfied</div>
+              <div className="text-sm md:text-base text-muted-foreground">Clients<br />Happy</div>
+            </div>
+            <div className="text-center space-y-2">
+              <div className="text-4xl md:text-5xl font-bold text-primary glow-text">5+</div>
+              <div className="text-sm md:text-base text-muted-foreground">Certificates<br />Earned</div>
             </div>
           </div>
         </div>

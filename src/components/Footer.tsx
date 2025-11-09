@@ -4,13 +4,28 @@ import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 500);
     };
+    
+    // Sync with theme changes
+    const observer = new MutationObserver(() => {
+      setTheme(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -33,7 +48,9 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="relative py-12 px-6 border-t border-primary/20 overflow-hidden">
+      <footer className={`relative py-12 px-6 border-t overflow-hidden transition-all duration-300 ${
+        theme === "light" ? "bg-white border-gray-200" : "border-primary/20"
+      }`}>
         {/* Subtle Background Glow */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-primary/5 blur-[100px] rounded-full" />
 
