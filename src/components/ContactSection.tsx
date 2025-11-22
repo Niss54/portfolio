@@ -81,13 +81,13 @@ const ContactSection = () => {
     {
       icon: Instagram,
       label: "Instagram",
-      href: "https://instagram.com/nishantmaurya",
+      href: "https://bit.ly/3LMyPJM",
       color: "from-purple-500 to-pink-500",
     },
     {
       icon: MessageCircle,
       label: "WhatsApp",
-      href: "https://wa.me/918840301998",
+      href: "http://bit.ly/4oUt1MH",
       color: "from-green-500 to-emerald-400",
     },
   ];
