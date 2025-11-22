@@ -4,10 +4,9 @@ const AnimatedBackground = () => {
       {/* Spline 3D Background - Fixed and Interactive */}
       <div className="fixed inset-0 w-full h-full overflow-hidden z-0 pointer-events-auto">
         <iframe 
-          src='https://my.spline.design/reactiveorb-LBRDkQUVF2OIVdfCuMkdFPdq/' 
+          src='https://my.spline.design/particlesflow-K0I7FMJwQRjHw9WHbuawWJqB/' 
           frameBorder='0'
           className="w-full h-full border-none"
-          style={{ transform: 'scale(1.45)' }}
           title="3D Background Animation"
         />
       </div>
