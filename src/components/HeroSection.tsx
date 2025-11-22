@@ -153,20 +153,20 @@ const HeroSection = () => {
           {/* Stats Section */}
           <div className={`grid grid-cols-2 lg:grid-cols-4 gap-8 ${isVisible ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
             <div className="text-center space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-primary glow-text">1+</div>
-              <div className="text-sm md:text-base text-muted-foreground">Year of<br />Experience</div>
-            </div>
-            <div className="text-center space-y-2">
               <div className="text-4xl md:text-5xl font-bold text-primary glow-text">10+</div>
               <div className="text-sm md:text-base text-muted-foreground">Projects<br />Done</div>
             </div>
             <div className="text-center space-y-2">
               <div className="text-4xl md:text-5xl font-bold text-primary glow-text">10+</div>
-              <div className="text-sm md:text-base text-muted-foreground">Clients<br />Happy</div>
+              <div className="text-sm md:text-base text-muted-foreground">Happy<br />Clients</div>
             </div>
             <div className="text-center space-y-2">
-              <div className="text-4xl md:text-5xl font-bold text-primary glow-text">5+</div>
-              <div className="text-sm md:text-base text-muted-foreground">Certificates<br />Earned</div>
+              <div className="text-4xl md:text-5xl font-bold text-primary glow-text">1</div>
+              <div className="text-sm md:text-base text-muted-foreground">Year<br />Experience</div>
+            </div>
+            <div className="text-center space-y-2">
+              <div className="text-4xl md:text-5xl font-bold text-primary glow-text">5</div>
+              <div className="text-sm md:text-base text-muted-foreground">Certificates</div>
             </div>
           </div>
         </div>

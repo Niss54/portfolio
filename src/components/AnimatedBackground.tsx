@@ -7,6 +7,7 @@ const AnimatedBackground = () => {
           src='https://my.spline.design/particlesflow-K0I7FMJwQRjHw9WHbuawWJqB/' 
           frameBorder='0'
           className="w-full h-full border-none"
+          style={{ transform: 'scale(1.45)' }}
           title="3D Background Animation"
         />
       </div>
