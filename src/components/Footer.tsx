@@ -35,7 +35,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Linkedin, href: "https://linkedin.com/in/nishantmaurya", label: "LinkedIn" },
     { icon: Github, href: "https://github.com/nishantmaurya", label: "GitHub" },
-    { icon: Instagram, href: "https://instagram.com/nishantmaurya", label: "Instagram" },
+    { icon: Instagram, href: "https://bit.ly/3LMyPJM", label: "Instagram" },
     { icon: Youtube, href: "https://youtube.com/@nishantmaurya", label: "YouTube" },
   ];
 
