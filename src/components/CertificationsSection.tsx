@@ -11,10 +11,10 @@ const CertificationsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const stats = [
-    { icon: Briefcase, label: "Projects Done", value: 50, suffix: "+" },
-    { icon: Users, label: "Happy Clients", value: 30, suffix: "+" },
-    { icon: Calendar, label: "Years Experience", value: 5, suffix: "+" },
-    { icon: Award, label: "Certifications", value: 12, suffix: "" },
+    { icon: Briefcase, label: "Projects Done", value: 10, suffix: "+" },
+    { icon: Users, label: "Happy Clients", value: 10, suffix: "+" },
+    { icon: Calendar, label: "Years Experience", value: 1, suffix: "" },
+    { icon: Award, label: "Certifications", value: 5, suffix: "" },
   ];
 
   const certifications = [
