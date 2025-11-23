@@ -33,10 +33,10 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Linkedin, href: "https://linkedin.com/in/nishantmaurya", label: "LinkedIn" },
-    { icon: Github, href: "https://github.com/nishantmaurya", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/niss-visuals", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/Niss54", label: "GitHub" },
     { icon: Instagram, href: "https://bit.ly/3LMyPJM", label: "Instagram" },
-    { icon: Youtube, href: "https://youtube.com/@nishantmaurya", label: "YouTube" },
+    { icon: Youtube, href: "https://www.youtube.com/@Niss.visuals", label: "YouTube" },
   ];
 
   const navLinks = [

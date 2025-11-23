@@ -69,13 +69,13 @@ const ContactSection = () => {
     {
       icon: Mail,
       label: "Gmail",
-      href: "mailto:nishant@example.com",
+      href: "mailto:Nishantma05@gmail.com",
       color: "from-red-500 to-pink-500",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/nishantmaurya",
+      href: "https://www.linkedin.com/in/niss-visuals",
       color: "from-blue-600 to-blue-400",
     },
     {
