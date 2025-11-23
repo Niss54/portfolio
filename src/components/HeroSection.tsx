@@ -1,11 +1,29 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { Phone } from "lucide-react";
 import profileImage from "@/assets/profile.png";
 
 const HeroSection = () => {
   const titles = ["Developer", "Engineer", "Founder", "CEO", "Designer", "an Editor", "Content Creator", "AI Expert", "an Influencer"];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const { toast } = useToast();
+
+  const handleContactClick = () => {
+    const phoneNumber = "+918840301998";
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      window.location.href = `tel:${phoneNumber}`;
+    } else {
+      navigator.clipboard.writeText(phoneNumber);
+      toast({
+        title: "Number copied",
+        description: "+91 88403 01998",
+      });
+    }
+  };
 
   useEffect(() => {
     setIsVisible(true);
@@ -139,13 +157,19 @@ const HeroSection = () => {
                 >
                   Hire Me
                 </Button>
-                <Button 
-                  variant="hero-outline" 
-                  size="xl"
-                  onClick={() => window.location.href = 'tel:8840301998'}
+                <button 
+                  onClick={handleContactClick}
+                  className="group relative px-8 py-4 bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-3"
+                  style={{
+                    boxShadow: '0 4px 14px 0 rgb(34 197 94 / 39%), inset 0 1px 0 0 rgb(255 255 255 / 20%)',
+                  }}
                 >
+                  <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
                   Contact Me
-                </Button>
+                  <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+                    style={{ mixBlendMode: 'overlay' }} 
+                  />
+                </button>
               </div>
             </div>
           </div>
