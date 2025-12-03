@@ -1,8 +1,8 @@
-# Welcome to your Lovable project
+# Welcome to your  project
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/6e4d2adf-1de5-4e2e-b741-3e2d8efdec03
+**URL**: https://nissh.info
 
 ## How can I edit this code?
 
@@ -10,9 +10,9 @@ There are several ways of editing your application.
 
 **Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6e4d2adf-1de5-4e2e-b741-3e2d8efdec03) and start prompting.
+Simply visit the [nissh Project](https://nissh.info) and start prompting.
 
-Changes made via Lovable will be committed automatically to this repo.
+Changes made via niss will be committed automatically to this repo.
 
 **Use your preferred IDE**
 
@@ -62,7 +62,7 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/6e4d2adf-1de5-4e2e-b741-3e2d8efdec03) and click on Share -> Publish.
+Simply open [Nissh inovation](https://nissh.info) and click on Share -> Publish.
 
 ## Can I connect a custom domain to my Lovable project?
 
@@ -70,4 +70,4 @@ Yes, you can!
 
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Read more here: [Setting up a custom domain](https://nissh.info)
