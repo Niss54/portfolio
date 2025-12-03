@@ -41,27 +41,7 @@ const HeroSection = () => {
             {/* Profile Image with Glow Effect */}
             <div className={`flex-1 flex justify-center order-1 lg:order-1 ${isVisible ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
               <div className="relative">
-                {/* Static Glow Ring - No animation */}
-                <div className="absolute inset-0 rounded-full" 
-                  style={{
-                    background: 'radial-gradient(circle, hsl(189 100% 50% / 0.3), transparent 70%)',
-                    filter: 'blur(30px)',
-                    transform: 'scale(1.4)',
-                  }}
-                />
-                
-                {/* Static Border - Removed spinning animation */}
-                <div className="absolute inset-0 rounded-full" 
-                  style={{ 
-                    background: 'conic-gradient(from 0deg, hsl(189 100% 50%), hsl(250 70% 60%), hsl(189 100% 50%))',
-                    padding: '3px',
-                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                    WebkitMaskComposite: 'xor',
-                    maskComposite: 'exclude',
-                  }}
-                />
-
-                {/* Image Container - Removed float animation */}
+                {/* Image Container */}
                 <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/30">
                   <img 
                     src={profileImage} 
