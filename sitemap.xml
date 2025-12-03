@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
+  <!-- Main Website -->
+  <url>
+    <loc>https://nissh.info/</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://nissh.info/preview.png</image:loc>
+      <image:caption>Nissh Innovation — Official Website of Nishant Maurya</image:caption>
+    </image:image>
+  </url>
+
+  <!-- About -->
+  <url>
+    <loc>https://nissh.info/about</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://nissh.info/contact</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Limpio Brand Page -->
+  <url>
+    <loc>https://nissh.info/limpio</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://nissh.info/images/limpio-banner.png</image:loc>
+      <image:caption>Limpio — The Soul Cleaner by Nishant Maurya</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Limpio Fresh Shop -->
+  <url>
+    <loc>https://nissh.info/limpio-fresh-shop</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- JeevanSOS -->
+  <url>
+    <loc>https://nissh.info/jeevan-sos</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://nissh.info/images/jeevansos-banner.png</image:loc>
+      <image:caption>JeevanSOS — Emergency Medicine & Blood Request Platform</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Lucid Onboarding Glow -->
+  <url>
+    <loc>https://nissh.info/lucid-onboarding-glow</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- InternAI -->
+  <url>
+    <loc>https://nissh.info/internai</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://nissh.info/images/internai-preview.png</image:loc>
+      <image:caption>InternAI — Smart Internship Finder</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Niss Visuals Portfolio -->
+  <url>
+    <loc>https://nissh.info/niss-visuals</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://nissh.info/images/niss-visuals-banner.png</image:loc>
+      <image:caption>Niss Visuals — Creative Studio by Nishant Maurya</image:caption>
+    </image:image>
+    <video:video>
+      <video:content_loc>https://www.youtube.com/@Niss.visuals</video:content_loc>
+      <video:title>Niss Visuals – Official YouTube Channel</video:title>
+      <video:description>Creative reels, editing, cinematography, and tech visuals by Nishant Maurya.</video:description>
+      <video:duration>120</video:duration>
+      <video:publication_date>2025-12-03</video:publication_date>
+    </video:video>
+  </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://nissh.info/blog</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://nissh.info/privacy</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+</urlset>
+
