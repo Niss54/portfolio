@@ -29,7 +29,7 @@ const HeroSection = () => {
     setIsVisible(true);
     const interval = setInterval(() => {
       setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
-    }, 3000);
+    }, 5000); // Increased from 3s to 5s for better performance
     return () => clearInterval(interval);
   }, []);
 
@@ -41,19 +41,18 @@ const HeroSection = () => {
             {/* Profile Image with Glow Effect */}
             <div className={`flex-1 flex justify-center order-1 lg:order-1 ${isVisible ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
               <div className="relative">
-                {/* Outer Glow Ring */}
-                <div className="absolute inset-0 rounded-full animate-pulse-glow" 
+                {/* Static Glow Ring - No animation */}
+                <div className="absolute inset-0 rounded-full" 
                   style={{
-                    background: 'radial-gradient(circle, hsl(189 100% 50% / 0.4), transparent 70%)',
-                    filter: 'blur(40px)',
-                    transform: 'scale(1.6)',
+                    background: 'radial-gradient(circle, hsl(189 100% 50% / 0.3), transparent 70%)',
+                    filter: 'blur(30px)',
+                    transform: 'scale(1.4)',
                   }}
                 />
                 
-                {/* Rotating Border */}
-                <div className="absolute inset-0 rounded-full animate-spin" 
+                {/* Static Border - Removed spinning animation */}
+                <div className="absolute inset-0 rounded-full" 
                   style={{ 
-                    animationDuration: '10s',
                     background: 'conic-gradient(from 0deg, hsl(189 100% 50%), hsl(250 70% 60%), hsl(189 100% 50%))',
                     padding: '3px',
                     WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
@@ -62,8 +61,8 @@ const HeroSection = () => {
                   }}
                 />
 
-                {/* Image Container */}
-                <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/30 animate-float">
+                {/* Image Container - Removed float animation */}
+                <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/30">
                   <img 
                     src={profileImage} 
                     alt="Nishant Maurya"
