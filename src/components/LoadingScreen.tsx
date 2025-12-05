@@ -34,7 +34,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
         autoPlay
         muted
         playsInline
-        className="w-full h-full object-contain max-w-[400px] max-h-[400px]"
+        className="w-full h-full object-cover"
       >
         <source src="/splash-video.mp4" type="video/mp4" />
       </video>
