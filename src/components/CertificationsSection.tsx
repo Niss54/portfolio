@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Award, Briefcase, Users, Calendar } from "lucide-react";
+import { Award, Briefcase, Users, Calendar, X } from "lucide-react";
 import certSoftflew from "@/assets/cert-softflew.png";
 import certAws from "@/assets/cert-aws.png";
 import certHackshastra from "@/assets/cert-hackshastra.png";
@@ -11,10 +11,16 @@ import certGdgGenesis from "@/assets/cert-gdg-genesis.jpg";
 import certTechgig from "@/assets/cert-techgig.jpg";
 import certGoogleStartups from "@/assets/cert-google-startups.jpg";
 
+interface Certification {
+  name: string;
+  image: string;
+  description: string;
+}
+
 const CertificationsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
-
   const stats = [
     { icon: Briefcase, label: "Projects Done", value: 10, suffix: "+" },
     { icon: Users, label: "Happy Clients", value: 10, suffix: "+" },
@@ -156,7 +162,8 @@ const CertificationsSection = () => {
             {certifications.map((cert, index) => (
               <div
                 key={cert.name}
-                className={`group relative glass-strong rounded-2xl p-6 text-center border border-primary/20 transition-all duration-500 hover:translate-y-[-8px] hover:shadow-[0_0_40px_hsl(189_100%_50%/0.4)] ${
+                onClick={() => setSelectedCert(cert)}
+                className={`group relative glass-strong rounded-2xl p-6 text-center border border-primary/20 transition-all duration-500 hover:translate-y-[-8px] hover:shadow-[0_0_40px_hsl(189_100%_50%/0.4)] cursor-pointer ${
                   isVisible ? 'animate-slide-up' : 'opacity-0'
                 }`}
                 style={{ animationDelay: `${600 + index * 100}ms` }}
@@ -193,6 +200,46 @@ const CertificationsSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedCert && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-md animate-fade-in"
+          onClick={() => setSelectedCert(null)}
+        >
+          <div 
+            className="relative max-w-4xl w-full max-h-[90vh] glass-strong rounded-2xl border border-primary/30 overflow-hidden animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedCert(null)}
+              className="absolute top-4 right-4 z-10 p-2 glass-strong rounded-full border border-primary/30 text-foreground hover:text-primary hover:border-primary transition-all duration-300"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Certificate Image */}
+            <div className="p-6">
+              <img 
+                src={selectedCert.image} 
+                alt={selectedCert.name}
+                className="w-full h-auto max-h-[70vh] object-contain rounded-xl"
+              />
+            </div>
+
+            {/* Certificate Info */}
+            <div className="p-6 pt-0 text-center">
+              <h3 className="text-2xl font-bold text-foreground mb-2 glow-text">
+                {selectedCert.name}
+              </h3>
+              <p className="text-muted-foreground">
+                {selectedCert.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
