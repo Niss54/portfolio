@@ -5,6 +5,11 @@ import certAws from "@/assets/cert-aws.png";
 import certHackshastra from "@/assets/cert-hackshastra.png";
 import certIntel from "@/assets/cert-intel.png";
 import certInternai from "@/assets/cert-internai.png";
+import certVitBhopal from "@/assets/cert-vit-bhopal.jpg";
+import certCodematrix from "@/assets/cert-codematrix.jpg";
+import certGdgGenesis from "@/assets/cert-gdg-genesis.jpg";
+import certTechgig from "@/assets/cert-techgig.jpg";
+import certGoogleStartups from "@/assets/cert-google-startups.jpg";
 
 const CertificationsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -14,7 +19,7 @@ const CertificationsSection = () => {
     { icon: Briefcase, label: "Projects Done", value: 10, suffix: "+" },
     { icon: Users, label: "Happy Clients", value: 10, suffix: "+" },
     { icon: Calendar, label: "Years Experience", value: 1, suffix: "" },
-    { icon: Award, label: "Certifications", value: 5, suffix: "" },
+    { icon: Award, label: "Certifications", value: 10, suffix: "" },
   ];
 
   const certifications = [
@@ -42,6 +47,31 @@ const CertificationsSection = () => {
       name: "InternAI Assistant",
       image: certInternai,
       description: "AI-Powered Internship Training Program",
+    },
+    {
+      name: "VIT Bhopal UX Design",
+      image: certVitBhopal,
+      description: "Wireframe Submission - Innovation Council",
+    },
+    {
+      name: "CodeMatrix: Genesis",
+      image: certCodematrix,
+      description: "Round 1 Hackathon - Team Syntrix, AITH Kanpur",
+    },
+    {
+      name: "GDG CodeMatrix Genesis",
+      image: certGdgGenesis,
+      description: "Hackathon Participation - GDG DR AITD Kanpur",
+    },
+    {
+      name: "TechGig Innovation Challenge",
+      image: certTechgig,
+      description: "Ideas For India - Environmental Sustainability Hackathon",
+    },
+    {
+      name: "Google Startup School",
+      image: certGoogleStartups,
+      description: "Prompt to Prototype - Certificate of Completion",
     },
   ];
 
