@@ -5,7 +5,7 @@ import { Phone } from "lucide-react";
 import profileImage from "@/assets/profile.png";
 
 const HeroSection = () => {
-  const titles = ["Developer", "Engineer", "Founder", "CEO", "Designer", "an Editor", "Content Creator", "AI Expert", "an Influencer"];
+  const titles = ["a Developer", "a Designer", "an AI Expert", "an Engineer", "a CEO"];
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const { toast } = useToast();
