@@ -5,6 +5,11 @@ import projectJeevansos from "@/assets/project-jeevansos.png";
 import projectNeurosense from "@/assets/project-neurosense.png";
 import projectLimpio from "@/assets/project-limpio.png";
 import projectInternai from "@/assets/project-internai.png";
+import projectPhool from "@/assets/project-phool.png";
+import projectEventhub from "@/assets/project-eventhub.png";
+import projectNissh from "@/assets/project-nissh.png";
+import projectJeevansosV2 from "@/assets/project-jeevansos-v2.png";
+import projectLimpioV2 from "@/assets/project-limpio-v2.png";
 
 const ProjectsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -41,6 +46,46 @@ const ProjectsSection = () => {
       image: projectInternai,
       tags: ["AI", "React", "Node.js", "MongoDB"],
       demo: "#",
+      github: "#",
+    },
+    {
+      title: "Phool - Finding Her",
+      description: "Beautiful CSS flower animation project showcasing creative frontend development and artistic design.",
+      image: projectPhool,
+      tags: ["CSS Art", "Animation", "Creative", "Frontend"],
+      demo: "https://phool-finding-her.netlify.app",
+      github: "#",
+    },
+    {
+      title: "EventHub",
+      description: "Discover local events near you - browse by category and explore community calendars.",
+      image: projectEventhub,
+      tags: ["Events", "React", "Community", "Discovery"],
+      demo: "#",
+      github: "#",
+    },
+    {
+      title: "Nissh Portfolio",
+      description: "Personal portfolio website with stunning particle animations and modern design aesthetics.",
+      image: projectNissh,
+      tags: ["Portfolio", "React", "Animation", "Design"],
+      demo: "https://nissh.info",
+      github: "#",
+    },
+    {
+      title: "JeevanSOS V2",
+      description: "Enhanced version with 10-minute medicine delivery and improved emergency response features.",
+      image: projectJeevansosV2,
+      tags: ["Healthcare", "React", "Delivery", "Emergency"],
+      demo: "https://preview--jeevan-sos-connect-58.lovable.app",
+      github: "#",
+    },
+    {
+      title: "Limpio Shop",
+      description: "Full e-commerce mobile-first experience with product categories and seamless checkout.",
+      image: projectLimpioV2,
+      tags: ["E-commerce", "Mobile", "PWA", "Shopping"],
+      demo: "https://limpios.shop",
       github: "#",
     },
   ];
