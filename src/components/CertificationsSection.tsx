@@ -11,6 +11,7 @@ import certGdgGenesis from "@/assets/cert-gdg-genesis.jpg";
 import certTechgig from "@/assets/cert-techgig.jpg";
 import certGoogleStartups from "@/assets/cert-google-startups.jpg";
 import certDuLogicLeague from "@/assets/cert-du-logic-league.jpg";
+import certMicrosoftGenai from "@/assets/cert-microsoft-genai.jpg";
 
 interface Certification {
   name: string;
@@ -26,7 +27,7 @@ const CertificationsSection = () => {
     { icon: Briefcase, label: "Projects Done", value: 10, suffix: "+" },
     { icon: Users, label: "Happy Clients", value: 10, suffix: "+" },
     { icon: Calendar, label: "Years Experience", value: 1, suffix: "" },
-    { icon: Award, label: "Certifications", value: 11, suffix: "" },
+    { icon: Award, label: "Certifications", value: 12, suffix: "" },
   ];
 
   const certifications = [
@@ -84,6 +85,11 @@ const CertificationsSection = () => {
       name: "DU Logic League",
       image: certDuLogicLeague,
       description: "Top Performer - ARSD College Tech-A-Thon Week 5",
+    },
+    {
+      name: "Microsoft x PW Skills",
+      image: certMicrosoftGenai,
+      description: "Generative AI for All - Certificate of Completion",
     },
   ];
 
