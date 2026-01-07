@@ -220,7 +220,7 @@ const CertificationsSection = () => {
           onClick={() => setSelectedCert(null)}
         >
           <div 
-            className="relative max-w-4xl w-full max-h-[90vh] glass-strong rounded-2xl border border-primary/30 overflow-hidden animate-scale-in"
+            className="relative max-w-4xl w-full max-h-[90vh] glass-strong rounded-2xl border border-primary/30 overflow-auto animate-scale-in flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
@@ -232,16 +232,16 @@ const CertificationsSection = () => {
             </button>
 
             {/* Certificate Image */}
-            <div className="p-6">
+            <div className="p-6 pb-4 flex-shrink-0">
               <img 
                 src={selectedCert.image} 
                 alt={selectedCert.name}
-                className="w-full h-auto max-h-[70vh] object-contain rounded-xl"
+                className="w-full h-auto max-h-[55vh] object-contain rounded-xl"
               />
             </div>
 
             {/* Certificate Info */}
-            <div className="p-6 pt-0 text-center">
+            <div className="p-6 pt-2 text-center flex-shrink-0 bg-background/50">
               <h3 className="text-2xl font-bold text-foreground mb-2 glow-text">
                 {selectedCert.name}
               </h3>
@@ -251,7 +251,7 @@ const CertificationsSection = () => {
               <a
                 href={selectedCert.image}
                 download={`${selectedCert.name.replace(/\s+/g, '_')}_Certificate`}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary/20 hover:bg-primary/30 text-primary border border-primary/30 hover:border-primary/50 rounded-xl font-medium transition-all duration-300 hover:scale-105"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/80 text-primary-foreground rounded-xl font-medium transition-all duration-300 hover:scale-105 shadow-lg"
               >
                 <Download className="w-5 h-5" />
                 Download Certificate
