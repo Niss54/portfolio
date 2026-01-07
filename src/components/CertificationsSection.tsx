@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Award, Briefcase, Users, Calendar, X } from "lucide-react";
+import { Award, Briefcase, Users, Calendar, X, Download } from "lucide-react";
 import certSoftflew from "@/assets/cert-softflew.png";
 import certAws from "@/assets/cert-aws.png";
 import certHackshastra from "@/assets/cert-hackshastra.png";
@@ -245,9 +245,17 @@ const CertificationsSection = () => {
               <h3 className="text-2xl font-bold text-foreground mb-2 glow-text">
                 {selectedCert.name}
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground mb-4">
                 {selectedCert.description}
               </p>
+              <a
+                href={selectedCert.image}
+                download={`${selectedCert.name.replace(/\s+/g, '_')}_Certificate`}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary/20 hover:bg-primary/30 text-primary border border-primary/30 hover:border-primary/50 rounded-xl font-medium transition-all duration-300 hover:scale-105"
+              >
+                <Download className="w-5 h-5" />
+                Download Certificate
+              </a>
             </div>
           </div>
         </div>
