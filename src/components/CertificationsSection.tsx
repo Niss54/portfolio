@@ -13,6 +13,8 @@ import certTechgig from "@/assets/cert-techgig.jpg";
 import certGoogleStartups from "@/assets/cert-google-startups.jpg";
 import certDuLogicLeague from "@/assets/cert-du-logic-league.jpg";
 import certMicrosoftGenai from "@/assets/cert-microsoft-genai-v2.jpg";
+import certGdgSyntrix from "@/assets/cert-gdg-syntrix.jpg";
+import certGdgNexora from "@/assets/cert-gdg-nexora.jpg";
 
 interface Certification {
   name: string;
@@ -29,7 +31,7 @@ const CertificationsSection = () => {
     { icon: Briefcase, label: "Projects Done", value: 10, suffix: "+" },
     { icon: Users, label: "Happy Clients", value: 10, suffix: "+" },
     { icon: Calendar, label: "Years Experience", value: 1, suffix: "" },
-    { icon: Award, label: "Certifications", value: 12, suffix: "" },
+    { icon: Award, label: "Certifications", value: 14, suffix: "" },
   ];
 
   const certifications = [
@@ -92,6 +94,16 @@ const CertificationsSection = () => {
       name: "Microsoft x PW Skills",
       image: certMicrosoftGenai,
       description: "Generative AI for All - Certificate of Completion",
+    },
+    {
+      name: "Google Developer Group",
+      image: certGdgSyntrix,
+      description: "CodeMatrix Genesis Finalist - Team Syntrix",
+    },
+    {
+      name: "Google Developer Group",
+      image: certGdgNexora,
+      description: "CodeMatrix Genesis Finalist - Team Nexora",
     },
   ];
 
