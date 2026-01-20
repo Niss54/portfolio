@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Phone } from "lucide-react";
+import { SplineHeroBackground } from "./AnimatedBackground";
 
 const HeroSection = () => {
   const titles = ["a Developer", "a Designer", "an AI Expert", "an Engineer", "a CEO"];
@@ -33,8 +34,11 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20 relative">
-      <div className="container mx-auto">
+    <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
+      {/* Spline 3D Background - Only for Hero */}
+      <SplineHeroBackground />
+      
+      <div className="container mx-auto relative z-10">
         {/* Text Content - Left Aligned */}
         <div className="max-w-3xl space-y-6">
           <div className={`space-y-4 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
-import AnimatedBackground from "@/components/AnimatedBackground";
+import { NeonBlueBackground } from "@/components/AnimatedBackground";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -30,21 +30,28 @@ const Index = () => {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      <AnimatedBackground />
-      <div className="relative z-10">
-        <Navbar />
+    <div className="relative min-h-screen">
+      <Navbar />
+      
+      {/* Hero Section - with Spline background */}
       <HeroSection />
-      <AboutSection />
-      <ServicesSection />
-      <ProjectsSection />
-      <TestimonialsSection />
-      <CertificationsSection />
-      <CollaborationBanner />
-      <ContactSection />
-      <Footer />
-      <ChatbotWidget />
+      
+      {/* All other sections - with premium neon blue background */}
+      <div className="relative">
+        <NeonBlueBackground />
+        <div className="relative z-10">
+          <AboutSection />
+          <ServicesSection />
+          <ProjectsSection />
+          <TestimonialsSection />
+          <CertificationsSection />
+          <CollaborationBanner />
+          <ContactSection />
+          <Footer />
+        </div>
       </div>
+      
+      <ChatbotWidget />
     </div>
   );
 };
