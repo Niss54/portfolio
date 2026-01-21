@@ -108,7 +108,7 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 px-6 relative" id="work">
+    <section ref={sectionRef} className="py-20 px-6 relative">
       {/* Floating Particles Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(10)].map((_, i) => (

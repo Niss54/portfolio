@@ -123,7 +123,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section ref={sectionRef} id="reviews" className="py-20 px-6 relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 px-6 relative overflow-hidden">
       {/* Subtle Background Lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/5 blur-[120px] rounded-full" />
 

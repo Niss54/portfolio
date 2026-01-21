@@ -93,7 +93,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 px-6" id="contact">
+    <section ref={sectionRef} className="py-20 px-6">
       <div className="container mx-auto">
         <div className="text-center mb-16">
           <p className={`text-primary text-lg font-medium mb-2 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
