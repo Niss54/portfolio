@@ -12,6 +12,7 @@ import CollaborationBanner from "@/components/CollaborationBanner";
 import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import ChatbotWidget from "@/components/ChatbotWidget";
+import SectionLighting from "@/components/SectionLighting";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,13 +41,34 @@ const Index = () => {
       <div className="relative">
         <NeonBlueBackground />
         <div className="relative z-10">
-          <AboutSection />
-          <ServicesSection />
-          <ProjectsSection />
-          <TestimonialsSection />
-          <CertificationsSection />
-          <CollaborationBanner />
-          <ContactSection />
+          <SectionLighting id="about" className="pt-8">
+            <AboutSection />
+          </SectionLighting>
+          
+          <SectionLighting id="services" className="pt-8">
+            <ServicesSection />
+          </SectionLighting>
+          
+          <SectionLighting id="work" className="pt-8">
+            <ProjectsSection />
+          </SectionLighting>
+          
+          <SectionLighting id="reviews" className="pt-8">
+            <TestimonialsSection />
+          </SectionLighting>
+          
+          <SectionLighting id="certifications" className="pt-8">
+            <CertificationsSection />
+          </SectionLighting>
+          
+          <SectionLighting className="pt-8">
+            <CollaborationBanner />
+          </SectionLighting>
+          
+          <SectionLighting id="contact" className="pt-8">
+            <ContactSection />
+          </SectionLighting>
+          
           <Footer />
         </div>
       </div>
