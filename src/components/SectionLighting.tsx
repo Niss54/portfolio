@@ -41,37 +41,28 @@ const SectionLighting = ({ children, className = "", id }: SectionLightingProps)
       className={`relative ${className}`}
     >
       {/* Premium Bulb Light at Top */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
-        {/* Wire/Cord */}
-        <div 
-          className={`w-[2px] h-8 transition-all duration-700 ${
-            isLightOn 
-              ? 'bg-gradient-to-b from-primary/80 to-primary shadow-[0_0_10px_hsl(189_100%_50%/0.6)]' 
-              : 'bg-muted-foreground/30'
-          }`}
-        />
-        
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
         {/* Bulb Container */}
         <div className="relative">
           {/* Glow Effect Behind Bulb */}
           <div 
-            className={`absolute inset-0 rounded-full blur-xl transition-all duration-700 ${
+            className={`absolute inset-0 rounded-full blur-lg transition-all duration-700 ${
               isLightOn 
-                ? 'bg-primary/60 scale-[2.5] opacity-100' 
+                ? 'bg-primary/50 scale-[2] opacity-100' 
                 : 'bg-transparent scale-100 opacity-0'
             }`}
           />
           
           {/* Bulb Icon */}
           <div 
-            className={`relative p-3 rounded-full border-2 transition-all duration-500 ${
+            className={`relative p-2.5 rounded-full border-2 transition-all duration-500 ${
               isLightOn 
-                ? 'bg-gradient-to-br from-primary via-cyan-400 to-primary border-primary/80 shadow-[0_0_30px_hsl(189_100%_50%/0.8),0_0_60px_hsl(189_100%_50%/0.4)]' 
+                ? 'bg-gradient-to-br from-primary via-cyan-400 to-primary border-primary/80 shadow-[0_0_20px_hsl(189_100%_50%/0.6)]' 
                 : 'bg-background/80 border-muted-foreground/30 shadow-none'
             }`}
           >
             <Lightbulb 
-              className={`w-5 h-5 transition-all duration-500 ${
+              className={`w-4 h-4 transition-all duration-500 ${
                 isLightOn 
                   ? 'text-background fill-background' 
                   : 'text-muted-foreground fill-transparent'
@@ -81,16 +72,15 @@ const SectionLighting = ({ children, className = "", id }: SectionLightingProps)
         </div>
       </div>
 
-      {/* Spotlight Cone Effect */}
+      {/* Subtle Spotlight Glow - trimmed and smaller */}
       <div 
-        className={`absolute top-0 left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[200px] md:h-[300px] pointer-events-none transition-all duration-700 z-10 ${
+        className={`absolute top-0 left-1/2 -translate-x-1/2 w-[200px] md:w-[300px] h-[80px] md:h-[120px] pointer-events-none transition-all duration-700 z-10 rounded-full ${
           isLightOn ? 'opacity-100' : 'opacity-0'
         }`}
         style={{
-          background: 'conic-gradient(from 90deg at 50% 0%, transparent 40%, hsl(189 100% 50% / 0.08) 45%, hsl(189 100% 50% / 0.15) 50%, hsl(189 100% 50% / 0.08) 55%, transparent 60%)',
-          transform: 'translateX(-50%)',
-          maskImage: 'linear-gradient(to bottom, white, transparent)',
-          WebkitMaskImage: 'linear-gradient(to bottom, white, transparent)',
+          background: 'radial-gradient(ellipse at center top, hsl(189 100% 50% / 0.15) 0%, hsl(189 100% 50% / 0.05) 40%, transparent 70%)',
+          maskImage: 'linear-gradient(to bottom, white 20%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to bottom, white 20%, transparent)',
         }}
       />
 
