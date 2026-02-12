@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Award, Briefcase, Users, Calendar } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import CertificateCard from "./CertificateCard";
 
 import certSoftflew from "@/assets/cert-softflew.png";
@@ -60,11 +60,9 @@ const CertificationsSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -72,10 +70,8 @@ const CertificationsSection = () => {
 
   useEffect(() => {
     if (!isVisible) return;
-    // Phase 1: cards slide in and stack
     setPhase("stacking");
-    // Phase 2: spread after stacking completes
-    const timer = setTimeout(() => setPhase("spread"), 1200);
+    const timer = setTimeout(() => setPhase("spread"), 1400);
     return () => clearTimeout(timer);
   }, [isVisible]);
 
@@ -95,47 +91,46 @@ const CertificationsSection = () => {
     return <span>{count}</span>;
   };
 
-  // Calculate card positions for each phase
   const getCardMotion = (index: number) => {
     const isLeft = index < centerIndex;
     const isCenter = index === centerIndex;
-    const isRight = index > centerIndex;
 
-    // Stacking: all converge to center with slight depth offset
-    const stackZ = (total - index) * 2;
-    const stackRotate = (index - centerIndex) * 0.5;
+    // Stack offset for depth illusion
+    const stackRotate = (index - centerIndex) * 0.4;
 
-    // Spread: fan out horizontally
-    const spreadOffset = (index - centerIndex) * 310; // px spacing
-    const fanRotation = (index - centerIndex) * 2.5; // slight rotation for fan effect
+    // Spread: fan with ±5deg max rotation
+    const spreadOffset = (index - centerIndex) * 290;
+    const maxFanRotation = 5;
+    const fanRotation = centerIndex === 0 ? 0 : ((index - centerIndex) / centerIndex) * maxFanRotation;
 
-    const initial = {
-      x: isCenter ? 0 : isLeft ? -800 : 800,
-      y: 0,
-      rotate: isCenter ? 0 : isLeft ? -15 : 15,
-      scale: 0.85,
-      opacity: 0,
+    return {
+      initial: {
+        x: isCenter ? 0 : isLeft ? -900 : 900,
+        y: 0,
+        rotate: isCenter ? 0 : isLeft ? -20 : 20,
+        scale: 0.8,
+        opacity: 0,
+      },
+      stacking: {
+        x: 0,
+        y: 0,
+        rotate: stackRotate,
+        scale: 1,
+        opacity: 1,
+      },
+      spread: {
+        x: spreadOffset,
+        y: 0,
+        rotate: fanRotation,
+        scale: 1,
+        opacity: 1,
+      },
     };
+  };
 
-    const stacking = {
-      x: 0,
-      y: 0,
-      rotate: stackRotate,
-      scale: 1,
-      opacity: 1,
-      zIndex: total - index,
-    };
-
-    const spread = {
-      x: spreadOffset,
-      y: 0,
-      rotate: fanRotation,
-      scale: 1,
-      opacity: 1,
-      zIndex: total - Math.abs(index - centerIndex),
-    };
-
-    return { initial, stacking, spread };
+  const getZIndex = (index: number) => {
+    if (phase === "spread") return total - Math.abs(index - centerIndex);
+    return total - index;
   };
 
   return (
@@ -178,16 +173,13 @@ const CertificationsSection = () => {
             Professional Certifications
           </h3>
 
-          {/* Deck Container - horizontally scrollable in spread phase */}
-          <div
-            className="relative overflow-x-auto overflow-y-visible pb-8"
-            style={{ minHeight: "480px" }}
-          >
+          {/* Deck Container */}
+          <div className="relative overflow-x-auto overflow-y-visible pb-8" style={{ minHeight: "460px" }}>
             <div
               className="relative flex items-center justify-center"
               style={{
-                minWidth: phase === "spread" ? `${total * 310}px` : "auto",
-                height: "440px",
+                minWidth: phase === "spread" ? `${total * 290}px` : "auto",
+                height: "420px",
                 margin: "0 auto",
               }}
             >
@@ -197,26 +189,29 @@ const CertificationsSection = () => {
 
                 return (
                   <motion.div
-                    key={cert.name + index}
+                    key={index}
                     className="absolute"
                     initial={m.initial}
                     animate={target}
                     transition={{
                       type: "spring",
-                      stiffness: phase === "spread" ? 60 : 80,
-                      damping: phase === "spread" ? 18 : 15,
-                      delay: phase === "stacking"
-                        ? Math.abs(index - centerIndex) * 0.06
-                        : phase === "spread"
-                          ? Math.abs(index - centerIndex) * 0.04
-                          : 0,
+                      stiffness: phase === "stacking" ? 90 : 55,
+                      damping: phase === "stacking" ? 12 : 16,
+                      bounce: phase === "stacking" ? 0.3 : 0,
+                      delay:
+                        phase === "stacking"
+                          ? Math.abs(index - centerIndex) * 0.05
+                          : phase === "spread"
+                            ? Math.abs(index - centerIndex) * 0.04
+                            : 0,
                     }}
-                    style={{ zIndex: (target as any).zIndex || 1 }}
+                    style={{ zIndex: getZIndex(index) }}
                   >
                     <CertificateCard
                       name={cert.name}
                       image={cert.image}
                       description={cert.description}
+                      isSpread={phase === "spread"}
                     />
                   </motion.div>
                 );
@@ -228,9 +223,9 @@ const CertificationsSection = () => {
           {phase === "spread" && (
             <motion.p
               className="text-center text-sm text-muted-foreground mt-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1 }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2 }}
             >
               ← Scroll to browse • Click any card to flip →
             </motion.p>
