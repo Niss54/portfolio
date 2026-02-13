@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import { NeonBlueBackground } from "@/components/AnimatedBackground";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import SkillsSection from "@/components/SkillsSection";
 import ServicesSection from "@/components/ServicesSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
@@ -43,6 +44,10 @@ const Index = () => {
         <div className="relative z-10">
           <SectionLighting id="about" className="pt-8">
             <AboutSection />
+          </SectionLighting>
+
+          <SectionLighting id="skills" className="pt-8">
+            <SkillsSection />
           </SectionLighting>
           
           <SectionLighting id="services" className="pt-8">
