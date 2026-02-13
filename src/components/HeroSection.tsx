@@ -132,8 +132,8 @@ const HeroSection = () => {
               />
             </button>
             <a 
-              href="/resume-nishant-maurya.jpg"
-              download="Nishant_Maurya_Resume.jpg"
+              href="/resume-nishant-maurya.pdf"
+              download="Nishant_Maurya_Resume.pdf"
               className="group relative px-8 py-4 bg-gradient-to-br from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-3"
               style={{
                 boxShadow: '0 4px 14px 0 rgb(168 85 247 / 39%), inset 0 1px 0 0 rgb(255 255 255 / 20%)',
