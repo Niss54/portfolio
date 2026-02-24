@@ -126,18 +126,23 @@ const ProjectsSection = () => {
       </div>
 
       <div className="container mx-auto relative">
-        <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold glow-text mb-4 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-            Featured Projects
-          </h2>
-          <div className={`w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 ${isVisible ? 'animate-slide-up delay-100' : 'opacity-0'}`} />
-          <p className={`text-muted-foreground text-lg max-w-2xl mx-auto ${isVisible ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
-            Showcasing my latest work in web development, mobile apps, and blockchain technology
-          </p>
+        <div className="flex items-center justify-between mb-16">
+          <div>
+            <h2 className={`text-4xl md:text-5xl font-bold glow-text mb-4 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
+              Featured Projects
+            </h2>
+            <div className={`w-20 h-1 bg-gradient-to-r from-primary to-secondary ${isVisible ? 'animate-slide-up delay-100' : 'opacity-0'}`} />
+          </div>
+          <a
+            href="/all-projects"
+            className={`px-5 py-2.5 text-sm font-medium rounded-xl border border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300 ${isVisible ? 'animate-slide-up delay-200' : 'opacity-0'}`}
+          >
+            View All Projects →
+          </a>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+          {projects.slice(0, 2).map((project, index) => (
             <div
               key={project.title}
               className={`group relative glass-strong rounded-2xl overflow-hidden border border-primary/20 transition-all duration-500 hover:scale-105 hover:shadow-[0_0_40px_hsl(189_100%_50%/0.4)] ${

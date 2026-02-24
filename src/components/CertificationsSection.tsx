@@ -137,11 +137,19 @@ const CertificationsSection = () => {
     <section ref={sectionRef} className="py-20 px-6">
       <div className="container mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold glow-text mb-4 ${isVisible ? "animate-slide-up" : "opacity-0"}`}>
-            Achievements & Stats
-          </h2>
-          <div className={`w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto ${isVisible ? "animate-slide-up delay-100" : "opacity-0"}`} />
+        <div className="flex items-center justify-between mb-16">
+          <div>
+            <h2 className={`text-4xl md:text-5xl font-bold glow-text mb-4 ${isVisible ? "animate-slide-up" : "opacity-0"}`}>
+              Achievements & Stats
+            </h2>
+            <div className={`w-20 h-1 bg-gradient-to-r from-primary to-secondary ${isVisible ? "animate-slide-up delay-100" : "opacity-0"}`} />
+          </div>
+          <a
+            href="/all-certificates"
+            className={`px-5 py-2.5 text-sm font-medium rounded-xl border border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300 ${isVisible ? "animate-slide-up delay-200" : "opacity-0"}`}
+          >
+            View All Certificates →
+          </a>
         </div>
 
         {/* Stats */}
