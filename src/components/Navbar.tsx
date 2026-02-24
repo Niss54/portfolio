@@ -44,7 +44,7 @@ const Navbar = () => {
       >
         {/* Logo */}
         <button onClick={() => scrollToSection("home")} className="flex items-center gap-2 shrink-0">
-          <img src={logo} alt="Logo" className="h-8 w-auto" />
+          <img src={logo} alt="Logo" className="h-10 w-auto" />
         </button>
 
         {/* Desktop Links */}
@@ -53,7 +53,7 @@ const Navbar = () => {
             <button
               key={link.id}
               onClick={() => scrollToSection(link.id)}
-              className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
+              className="px-4 py-2 text-base italic text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
             >
               {link.label}
             </button>
@@ -76,7 +76,7 @@ const Navbar = () => {
           <a
             href="/resume-nishant-maurya.pdf"
             download
-            className="px-5 py-2 text-sm font-medium rounded-xl bg-foreground text-background hover:opacity-90 transition-opacity"
+            className="px-5 py-2 text-base italic font-medium rounded-xl bg-foreground text-background hover:opacity-90 transition-opacity"
           >
             Download CV
           </a>
