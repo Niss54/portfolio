@@ -54,7 +54,8 @@ const CertificationsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [phase, setPhase] = useState<Phase>("hidden");
   const sectionRef = useRef<HTMLElement>(null);
-  const total = certifications.length;
+  const displayCerts = certifications.slice(0, 4);
+  const total = displayCerts.length;
   const centerIndex = Math.floor(total / 2);
 
   useEffect(() => {
@@ -191,7 +192,7 @@ const CertificationsSection = () => {
                 margin: "0 auto",
               }}
             >
-              {certifications.map((cert, index) => {
+              {displayCerts.map((cert, index) => {
                 const m = getCardMotion(index);
                 const target = phase === "spread" ? m.spread : phase === "stacking" ? m.stacking : m.initial;
 
