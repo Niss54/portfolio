@@ -1,65 +1,112 @@
 import { useState, useEffect, useRef } from "react";
-import { Code, Database, Globe, Server } from "lucide-react";
+import { Check } from "lucide-react";
 
 const SkillsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const skills = [
-    { name: "HTML/CSS", level: 95, icon: Globe, color: "from-primary to-cyan-400" },
-    { name: "JavaScript", level: 90, icon: Code, color: "from-secondary to-purple-400" },
-    { name: "React", level: 92, icon: Code, color: "from-primary to-purple-400" },
-    { name: "Python", level: 88, icon: Code, color: "from-secondary to-blue-400" },
-    { name: "SQL", level: 85, icon: Database, color: "from-primary to-green-400" },
-    { name: "Node.js", level: 85, icon: Server, color: "from-primary to-blue-400" },
-    { name: "MongoDB", level: 88, icon: Database, color: "from-secondary to-indigo-400" },
+  const categories = [
+    {
+      number: "1",
+      title: "Languages & Tools",
+      subtitle: "Core programming & version control",
+      items: [
+        "Python, JavaScript, C, Java",
+        "HTML/CSS, Tailwind CSS",
+        "Git, GitHub, GitLab, Docker",
+      ],
+      tags: ["Python", "JavaScript", "Java", "C", "Git"],
+    },
+    {
+      number: "2",
+      title: "AI & Machine Learning",
+      subtitle: "LLMs, agents, AI workflows",
+      items: [
+        "LLMs, LangChain, Hugging Face",
+        "AI Agents, n8n Workflows, ADK",
+        "Google Cloud DLP, Vertex AI, NLP",
+      ],
+      tags: ["LangChain", "Hugging Face", "n8n", "Vertex AI"],
+    },
+    {
+      number: "3",
+      title: "Full Stack & Cloud",
+      subtitle: "Databases, cloud, web apps",
+      items: [
+        "Streamlit, React, Modern Web Development",
+        "Supabase, MongoDB, PostgreSQL",
+        "Google Cloud, AWS, Docker",
+        "User Authentication & Crypto Payments",
+      ],
+      tags: ["Supabase", "MongoDB", "AWS", "Streamlit", "Docker"],
+    },
   ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        if (entry.isIntersecting) setIsVisible(true);
       },
       { threshold: 0.2 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
     <section ref={sectionRef} className="py-20 px-6">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className={`text-4xl md:text-5xl font-bold glow-text mb-4 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-            Technical Skills
-          </h2>
-          <div className={`w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto ${isVisible ? 'animate-slide-up delay-100' : 'opacity-0'}`} />
-        </div>
+      <div className="container mx-auto max-w-5xl">
+        <h2
+          className={`text-4xl md:text-5xl font-bold glow-text mb-16 ${
+            isVisible ? "animate-slide-up" : "opacity-0"
+          }`}
+        >
+          Skills & Expertise
+        </h2>
 
-        <div className={`max-w-3xl mx-auto space-y-6 ${isVisible ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
-          {skills.map((skill, index) => (
-            <div key={skill.name} className="space-y-2">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <skill.icon className="w-5 h-5 text-primary" />
-                  <span className="text-foreground font-medium">{skill.name}</span>
+        <div className="space-y-12">
+          {categories.map((cat, catIdx) => (
+            <div
+              key={cat.number}
+              className={`flex flex-col md:flex-row items-start gap-6 md:gap-12 ${
+                isVisible ? "animate-slide-up" : "opacity-0"
+              }`}
+              style={{ animationDelay: `${catIdx * 150}ms` }}
+            >
+              {/* Number + Items (left) */}
+              <div className="flex items-start gap-6 flex-1">
+                <span className="text-6xl md:text-7xl font-bold text-muted-foreground/30 leading-none select-none">
+                  {cat.number}
+                </span>
+                <div className="space-y-3">
+                  {cat.items.map((item) => (
+                    <div key={item} className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-primary shrink-0" />
+                      <span className="text-foreground/90 text-sm md:text-base">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {cat.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary border border-primary/30"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <span className="text-primary font-semibold">{skill.level}%</span>
               </div>
-              <div className="h-2 bg-muted rounded-full overflow-hidden">
-                <div
-                  className={`h-full bg-gradient-to-r ${skill.color} rounded-full transition-all duration-1000 ease-out`}
-                  style={{
-                    width: isVisible ? `${skill.level}%` : '0%',
-                    transitionDelay: `${200 + index * 100}ms`
-                  }}
-                />
+
+              {/* Title (right) */}
+              <div className="md:text-right md:min-w-[220px] shrink-0">
+                <h3 className="text-xl md:text-2xl font-bold text-foreground">
+                  {cat.title}
+                </h3>
+                <p className="text-muted-foreground text-sm">{cat.subtitle}</p>
               </div>
             </div>
           ))}
