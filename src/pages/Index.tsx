@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import { NeonBlueBackground } from "@/components/AnimatedBackground";
 import HeroSection from "@/components/HeroSection";
@@ -17,15 +18,21 @@ import SectionLighting from "@/components/SectionLighting";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
-    // Enable smooth scrolling
     document.documentElement.style.scrollBehavior = "smooth";
-
-    return () => {
-      document.documentElement.style.scrollBehavior = "auto";
-    };
+    return () => { document.documentElement.style.scrollBehavior = "auto"; };
   }, []);
+
+  useEffect(() => {
+    if (!isLoading && location.state?.scrollTo) {
+      setTimeout(() => {
+        const el = document.getElementById(location.state.scrollTo);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [isLoading, location.state]);
 
   if (isLoading) {
     return <LoadingScreen onComplete={() => setIsLoading(false)} />;
