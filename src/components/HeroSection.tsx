@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Phone } from "lucide-react";
 import { SplineHeroBackground } from "./AnimatedBackground";
@@ -111,46 +110,66 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className={`flex flex-wrap gap-4 ${isVisible ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
-            <Button 
-              variant="hero" 
-              size="xl"
+            <GlassButton 
+              label="Hire Me"
               onClick={() => window.open('http://bit.ly/4oUt1MH', '_blank')}
-            >
-              Hire Me
-            </Button>
-            <button 
+            />
+            <GlassButton 
+              label="Contact Me"
               onClick={handleContactClick}
-              className="group relative px-8 py-4 bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-3"
-              style={{
-                boxShadow: '0 4px 14px 0 rgb(34 197 94 / 39%), inset 0 1px 0 0 rgb(255 255 255 / 20%)',
+              icon={<Phone className="w-5 h-5" />}
+            />
+            <GlassButton 
+              label="Download CV"
+              onClick={() => {
+                const a = document.createElement('a');
+                a.href = '/resume-nishant-maurya.pdf';
+                a.download = 'Nishant_Maurya_Resume.pdf';
+                a.click();
               }}
-            >
-              <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
-              Contact Me
-              <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
-                style={{ mixBlendMode: 'overlay' }} 
-              />
-            </button>
-            <a 
-              href="/resume-nishant-maurya.pdf"
-              download="Nishant_Maurya_Resume.pdf"
-              className="group relative px-8 py-4 bg-gradient-to-br from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-3"
-              style={{
-                boxShadow: '0 4px 14px 0 rgb(168 85 247 / 39%), inset 0 1px 0 0 rgb(255 255 255 / 20%)',
-              }}
-            >
-              <svg className="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Download CV
-              <div className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
-                style={{ mixBlendMode: 'overlay' }} 
-              />
-            </a>
+              icon={
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              }
+            />
           </div>
         </div>
       </div>
     </section>
+  );
+};
+
+// Glass button with text slide-down animation on click
+const GlassButton = ({ label, onClick, icon }: { label: string; onClick: () => void; icon?: React.ReactNode }) => {
+  const [animating, setAnimating] = useState(false);
+
+  const handleClick = () => {
+    setAnimating(true);
+    setTimeout(() => setAnimating(false), 400);
+    onClick();
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      className="group relative px-8 py-4 bg-foreground/5 backdrop-blur-2xl border border-foreground/15 rounded-xl font-semibold text-foreground hover:bg-foreground/10 hover:border-foreground/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-3 overflow-hidden"
+      style={{
+        boxShadow: '0 4px 30px hsl(189 100% 50% / 0.1), inset 0 1px 0 hsl(0 0% 100% / 0.05)',
+        textShadow: '0 0 15px hsl(189 100% 50% / 0.5), 0 0 30px hsl(189 100% 50% / 0.25)',
+      }}
+    >
+      {icon && <span className="relative z-10">{icon}</span>}
+      <span className="relative z-10 inline-block overflow-hidden">
+        <span
+          className={`inline-block transition-all duration-300 ${animating ? 'animate-btn-text-drop' : ''}`}
+          style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
+        >
+          {label}
+        </span>
+      </span>
+      <div className="absolute inset-0 rounded-xl bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    </button>
   );
 };
 

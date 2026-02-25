@@ -43,11 +43,11 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4">
       <div
-        className={`flex items-center justify-between w-full max-w-6xl px-6 py-3 rounded-2xl border transition-all duration-300 ${
+        className={`flex items-center justify-between w-full max-w-6xl px-5 py-2 rounded-2xl border transition-all duration-300 ${
           scrolled
-            ? "bg-background/80 backdrop-blur-xl border-border/60 shadow-xl"
-            : "bg-background/50 backdrop-blur-md border-border/30"
-        } ${theme === "light" ? "bg-white/90 border-gray-200/60" : ""}`}
+            ? "bg-background/30 backdrop-blur-2xl border-border/20 shadow-lg"
+            : "bg-background/15 backdrop-blur-xl border-border/10"
+        } ${theme === "light" ? "bg-white/30 border-gray-200/20" : ""}`}
       >
         {/* Logo */}
         <button onClick={() => scrollToSection("home")} className="flex items-center gap-2 shrink-0">
@@ -60,7 +60,8 @@ const Navbar = () => {
             <button
               key={link.id}
               onClick={() => scrollToSection(link.id)}
-              className="px-4 py-2 text-base italic text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/50"
+              className="px-4 py-1.5 text-sm italic text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/30"
+              style={{ fontFamily: "'Playfair Display', 'Georgia', serif", fontStyle: "italic" }}
             >
               {link.label}
             </button>
@@ -83,7 +84,8 @@ const Navbar = () => {
           <a
             href="/resume-nishant-maurya.pdf"
             download
-            className="px-5 py-2 text-base italic font-medium rounded-xl bg-foreground text-background hover:opacity-90 transition-opacity"
+            className="px-5 py-1.5 text-sm italic font-medium rounded-xl bg-foreground/10 backdrop-blur-xl border border-foreground/20 text-foreground hover:bg-foreground/20 transition-all"
+            style={{ fontFamily: "'Playfair Display', 'Georgia', serif", fontStyle: "italic" }}
           >
             Download CV
           </a>
