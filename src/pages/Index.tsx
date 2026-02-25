@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import ChatbotWidget from "@/components/ChatbotWidget";
 import SectionLighting from "@/components/SectionLighting";
+import CustomCursor from "@/components/CustomCursor";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,6 +41,7 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen">
+      <CustomCursor />
       <Navbar />
       
       {/* Hero Section - with Spline background */}
