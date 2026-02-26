@@ -155,15 +155,15 @@ const GlassButton = ({ label, onClick, icon }: { label: string; onClick: () => v
       onClick={handleClick}
       className="group relative px-8 py-4 bg-foreground/5 backdrop-blur-2xl border border-foreground/15 rounded-xl font-semibold text-foreground hover:bg-foreground/10 hover:border-foreground/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-3 overflow-hidden"
       style={{
-        boxShadow: '0 4px 30px hsl(189 100% 50% / 0.1), inset 0 1px 0 hsl(0 0% 100% / 0.05)',
-        textShadow: '0 0 8px hsl(0 0% 100% / 0.15), 0 0 20px hsl(0 0% 100% / 0.06)',
+        boxShadow: '0 4px 30px hsl(189 100% 50% / 0.08), inset 0 1px 0 hsl(0 0% 100% / 0.03)',
+        textShadow: '0 0 12px hsl(0 0% 100% / 0.1)',
       }}
     >
       {icon && <span className="relative z-10">{icon}</span>}
       <span className="relative z-10 inline-block overflow-hidden">
         <span
           className={`inline-block transition-all duration-300 ${animating ? 'animate-btn-text-drop' : ''}`}
-          style={{ fontFamily: "'Dancing Script', cursive", letterSpacing: '0.02em' }}
+          style={{ fontFamily: "'Great Vibes', cursive", letterSpacing: '0.03em' }}
         >
           {label}
         </span>

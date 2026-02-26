@@ -61,7 +61,7 @@ const Navbar = () => {
               key={link.id}
               onClick={() => scrollToSection(link.id)}
               className="px-4 py-1.5 text-sm italic text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/30"
-              style={{ fontFamily: "'Dancing Script', cursive", letterSpacing: '0.02em' }}
+              style={{ fontFamily: "'Great Vibes', cursive", letterSpacing: '0.03em' }}
             >
               {link.label}
             </button>
@@ -85,7 +85,7 @@ const Navbar = () => {
             href="/resume-nishant-maurya.pdf"
             download
             className="px-5 py-1.5 text-sm italic font-medium rounded-xl bg-foreground/10 backdrop-blur-xl border border-foreground/20 text-foreground hover:bg-foreground/20 transition-all"
-            style={{ fontFamily: "'Dancing Script', cursive", letterSpacing: '0.02em' }}
+            style={{ fontFamily: "'Great Vibes', cursive", letterSpacing: '0.03em' }}
           >
             Download CV
           </a>
