@@ -1,21 +1,22 @@
 import { useState, useRef, useCallback } from "react";
 import { Download, Share2, Linkedin, Mail, Maximize2, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useToast } from "@/hooks/use-toast";
 
 interface CertificateCardProps {
   name: string;
-  image: string;
+  frontImage: string;
+  backImage: string;
   description: string;
   isSpread: boolean;
 }
 
-const CertificateCard = ({ name, image, description, isSpread }: CertificateCardProps) => {
-  const [isFlipped, setIsFlipped] = useState(false);
+const CertificateCard = ({ name, frontImage, backImage, description, isSpread }: CertificateCardProps) => {
+  const [flipState, setFlipState] = useState<0 | 1 | 2>(0); // 0=front, 1=back(right-to-left), 2=front(left-to-right)
   const [showFullView, setShowFullView] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const { toast } = useToast();
+
+  const isFlipped = flipState === 1;
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current || !isSpread) return;
@@ -28,6 +29,12 @@ const CertificateCard = ({ name, image, description, isSpread }: CertificateCard
   const handleMouseLeave = useCallback(() => {
     setTilt({ x: 0, y: 0 });
   }, []);
+
+  const handleClick = () => {
+    if (!isSpread) return;
+    // 0 -> 1 (flip to back, right-to-left), 1 -> 0 (flip back to front, left-to-right)
+    setFlipState(prev => prev === 0 ? 1 : 0);
+  };
 
   const handleShare = (platform: string) => {
     const url = window.location.href;
@@ -52,7 +59,7 @@ const CertificateCard = ({ name, image, description, isSpread }: CertificateCard
         style={{ perspective: "1000px" }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        onClick={() => isSpread && setIsFlipped(!isFlipped)}
+        onClick={handleClick}
       >
         <div
           style={{
@@ -68,7 +75,7 @@ const CertificateCard = ({ name, image, description, isSpread }: CertificateCard
               : "drop-shadow(0 12px 24px rgba(0,0,0,0.35))",
           }}
         >
-          {/* ===== FRONT SIDE ===== */}
+          {/* ===== FRONT SIDE (Title Card) ===== */}
           <div
             className="absolute inset-0 rounded-2xl overflow-hidden border border-primary/20"
             style={{
@@ -76,33 +83,12 @@ const CertificateCard = ({ name, image, description, isSpread }: CertificateCard
               WebkitBackfaceVisibility: "hidden",
             }}
           >
-            <div className="relative w-full h-full bg-gradient-to-br from-background via-background/95 to-background">
-              {/* Preview Image */}
-              <div className="w-full h-[62%] overflow-hidden">
-                <img src={image} alt={name} className="w-full h-full object-cover" loading="lazy" />
-                <div className="absolute inset-0 h-[62%] bg-gradient-to-t from-background via-background/30 to-transparent" />
-              </div>
-
-              {/* Title */}
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_6px_hsl(189_100%_50%/0.8)]" />
-                  <span className="text-[9px] uppercase tracking-[0.2em] text-primary font-bold">Certified</span>
-                </div>
-                <h4 className="text-sm font-bold text-foreground leading-tight mb-0.5">{name}</h4>
-                <p className="text-[11px] text-muted-foreground line-clamp-2">{description}</p>
-              </div>
-
-              {/* Corner accents */}
-              <div className="absolute top-2.5 right-2.5 w-6 h-6 border-t-2 border-r-2 border-primary/25 rounded-tr-lg" />
-              <div className="absolute bottom-2.5 left-2.5 w-6 h-6 border-b-2 border-l-2 border-primary/25 rounded-bl-lg" />
-
-              {/* Subtle shimmer overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            <div className="relative w-full h-full">
+              <img src={frontImage} alt={name} className="w-full h-full object-cover" loading="lazy" />
             </div>
           </div>
 
-          {/* ===== BACK SIDE ===== */}
+          {/* ===== BACK SIDE (Actual Certificate) ===== */}
           <div
             className="absolute inset-0 rounded-2xl overflow-hidden border border-primary/30"
             style={{
@@ -114,10 +100,10 @@ const CertificateCard = ({ name, image, description, isSpread }: CertificateCard
             <div className="relative w-full h-full bg-gradient-to-br from-background via-background/98 to-background flex flex-col">
               {/* Full Certificate */}
               <div className="flex-1 p-3 overflow-hidden flex items-center justify-center">
-                <img src={image} alt={name} className="w-full h-full object-contain rounded-lg" loading="lazy" />
+                <img src={backImage} alt={name} className="w-full h-full object-contain rounded-lg" loading="lazy" />
               </div>
 
-              {/* Action Panel - slides up after flip */}
+              {/* Action Panel */}
               <div
                 className="p-3 pt-2 border-t border-primary/10"
                 onClick={(e) => e.stopPropagation()}
@@ -127,7 +113,7 @@ const CertificateCard = ({ name, image, description, isSpread }: CertificateCard
               >
                 <div className="flex items-center justify-center gap-1.5">
                   <a
-                    href={image}
+                    href={backImage}
                     download={`${name.replace(/\s+/g, "_")}_Certificate`}
                     className={actionBtnClass}
                     title="Download"
@@ -174,15 +160,12 @@ const CertificateCard = ({ name, image, description, isSpread }: CertificateCard
             transition={{ duration: 0.3 }}
             onClick={() => setShowFullView(false)}
           >
-            {/* Backdrop */}
             <motion.div
               className="absolute inset-0 bg-background/85 backdrop-blur-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             />
-
-            {/* Content */}
             <motion.div
               className="relative max-w-4xl w-full max-h-[90vh] glass-strong rounded-2xl border border-primary/30 overflow-auto flex flex-col"
               initial={{ scale: 0.85, opacity: 0, y: 30 }}
@@ -198,7 +181,7 @@ const CertificateCard = ({ name, image, description, isSpread }: CertificateCard
                 <X className="w-5 h-5" />
               </button>
               <div className="p-6">
-                <img src={image} alt={name} className="w-full h-auto max-h-[70vh] object-contain rounded-xl" />
+                <img src={backImage} alt={name} className="w-full h-auto max-h-[70vh] object-contain rounded-xl" />
               </div>
               <div className="p-6 pt-2 text-center bg-background/50">
                 <h3 className="text-2xl font-bold text-foreground mb-1 glow-text">{name}</h3>
@@ -209,7 +192,6 @@ const CertificateCard = ({ name, image, description, isSpread }: CertificateCard
         )}
       </AnimatePresence>
 
-      {/* Keyframe for action panel slide-in */}
       <style>{`
         @keyframes slideUpFadeIn {
           from { opacity: 0; transform: translateY(8px); }
