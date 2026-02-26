@@ -93,9 +93,21 @@ const Navbar = () => {
           <a
             href="/resume-nishant-maurya.pdf"
             download
-            className="px-5 py-1.5 text-sm italic font-medium rounded-xl bg-foreground/10 backdrop-blur-xl border border-foreground/20 text-foreground hover:bg-foreground/20 transition-all"
+            className="relative px-5 py-1.5 text-sm italic font-medium rounded-full bg-foreground/5 backdrop-blur-xl text-foreground hover:bg-foreground/10 transition-all overflow-hidden"
             style={{ fontFamily: "'Great Vibes', cursive", letterSpacing: '0.03em' }}
           >
+            <div
+              className="absolute inset-0 rounded-full pointer-events-none"
+              style={{
+                padding: '1px',
+                background: 'linear-gradient(90deg, transparent 0%, hsl(189 100% 50% / 0.6) 30%, hsl(200 100% 70% / 0.8) 50%, hsl(189 100% 50% / 0.6) 70%, transparent 100%)',
+                backgroundSize: '200% 100%',
+                animation: 'border-glow-slide 3s linear infinite',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                maskComposite: 'exclude',
+              }}
+            />
             Download CV
           </a>
         </div>
