@@ -108,7 +108,7 @@ const Navbar = () => {
                 maskComposite: 'exclude',
               }}
             />
-            Download CV
+            <span className="relative z-10">Download CV</span>
           </a>
         </div>
 
