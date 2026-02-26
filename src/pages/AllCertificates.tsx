@@ -1,41 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import CertificateCard from "@/components/CertificateCard";
-
-import certSoftflew from "@/assets/cert-softflew.png";
-import certAws from "@/assets/cert-aws.png";
-import certHackshastra from "@/assets/cert-hackshastra.png";
-import certIntel from "@/assets/cert-intel.png";
-import certInternai from "@/assets/cert-internai.png";
-import certVitBhopal from "@/assets/cert-vit-bhopal.jpg";
-import certCodematrix from "@/assets/cert-codematrix.jpg";
-import certGdgGenesis from "@/assets/cert-gdg-genesis.jpg";
-import certTechgig from "@/assets/cert-techgig.jpg";
-import certGoogleStartups from "@/assets/cert-google-startups.jpg";
-import certDuLogicLeague from "@/assets/cert-du-logic-league.jpg";
-import certMicrosoftGenai from "@/assets/cert-microsoft-genai-v2.jpg";
-import certGdgSyntrix from "@/assets/cert-gdg-syntrix.jpg";
-import certGdgNexora from "@/assets/cert-gdg-nexora.jpg";
-
-const certifications = [
-  { name: "SOFTFLEW Technologies", image: certSoftflew, description: "Python with Data Science - 41 Days Summer Training" },
-  { name: "AWS Solutions Architecture", image: certAws, description: "Solutions Architecture Job Simulation via Forage" },
-  { name: "HackShastra", image: certHackshastra, description: "Round 1 Idea Submission - Team Red Shade" },
-  { name: "Intel AI for Entrepreneurship", image: certIntel, description: "Skill India Digital Hub - AI for Entrepreneurship" },
-  { name: "InternAI Assistant", image: certInternai, description: "AI-Powered Internship Training Program" },
-  { name: "VIT Bhopal UX Design", image: certVitBhopal, description: "Wireframe Submission - Innovation Council" },
-  { name: "CodeMatrix: Genesis", image: certCodematrix, description: "Round 1 Hackathon - Team Syntrix, AITH Kanpur" },
-  { name: "GDG CodeMatrix Genesis", image: certGdgGenesis, description: "Hackathon Participation - GDG DR AITD Kanpur" },
-  { name: "TechGig Innovation Challenge", image: certTechgig, description: "Ideas For India - Environmental Sustainability Hackathon" },
-  { name: "Google Startup School", image: certGoogleStartups, description: "Prompt to Prototype - Certificate of Completion" },
-  { name: "DU Logic League", image: certDuLogicLeague, description: "Top Performer - ARSD College Tech-A-Thon Week 5" },
-  { name: "Microsoft x PW Skills", image: certMicrosoftGenai, description: "Generative AI for All - Certificate of Completion" },
-  { name: "Google Developer Group", image: certGdgSyntrix, description: "CodeMatrix Genesis Finalist - Team Syntrix" },
-  { name: "Google Developer Group", image: certGdgNexora, description: "CodeMatrix Genesis Finalist - Team Nexora" },
-];
+import { certifications } from "@/data/certifications";
 
 const AllCertificates = () => {
   const navigate = useNavigate();
@@ -72,7 +41,8 @@ const AllCertificates = () => {
               >
                 <CertificateCard
                   name={cert.name}
-                  image={cert.image}
+                  frontImage={cert.frontImage}
+                  backImage={cert.backImage}
                   description={cert.description}
                   isSpread={true}
                 />
