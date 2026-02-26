@@ -153,12 +153,21 @@ const GlassButton = ({ label, onClick, icon }: { label: string; onClick: () => v
   return (
     <button
       onClick={handleClick}
-      className="group relative px-8 py-4 bg-foreground/5 backdrop-blur-2xl border border-foreground/15 rounded-xl font-semibold text-foreground hover:bg-foreground/10 hover:border-foreground/30 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-3 overflow-hidden"
-      style={{
-        boxShadow: '0 4px 30px hsl(189 100% 50% / 0.08), inset 0 1px 0 hsl(0 0% 100% / 0.03)',
-        textShadow: '0 0 12px hsl(0 0% 100% / 0.1)',
-      }}
+      className="group relative px-8 py-4 bg-foreground/5 backdrop-blur-2xl rounded-full font-semibold text-foreground hover:bg-foreground/10 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center gap-3 overflow-visible"
     >
+      {/* Animated gradient border */}
+      <div
+        className="absolute inset-0 rounded-full pointer-events-none"
+        style={{
+          padding: '1px',
+          background: 'linear-gradient(90deg, transparent 0%, hsl(189 100% 50% / 0.6) 30%, hsl(200 100% 70% / 0.8) 50%, hsl(189 100% 50% / 0.6) 70%, transparent 100%)',
+          backgroundSize: '200% 100%',
+          animation: 'border-glow-slide 3s linear infinite',
+          WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+          WebkitMaskComposite: 'xor',
+          maskComposite: 'exclude',
+        }}
+      />
       {icon && <span className="relative z-10">{icon}</span>}
       <span className="relative z-10 inline-block overflow-hidden">
         <span
@@ -168,7 +177,6 @@ const GlassButton = ({ label, onClick, icon }: { label: string; onClick: () => v
           {label}
         </span>
       </span>
-      <div className="absolute inset-0 rounded-xl bg-foreground/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </button>
   );
 };

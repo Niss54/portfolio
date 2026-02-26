@@ -152,6 +152,15 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes border-glow-slide {
+    0% {
+      background-position: 200% 50%;
+    }
+    100% {
+      background-position: -200% 50%;
+    }
+  }
+
   @keyframes fade-in {
     from {
       opacity: 0;
