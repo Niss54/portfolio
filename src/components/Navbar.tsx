@@ -43,12 +43,21 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4">
       <div
-        className={`flex items-center justify-between w-full max-w-6xl px-5 py-2 rounded-2xl border transition-all duration-300 ${
-          scrolled
-            ? "bg-background/30 backdrop-blur-2xl border-border/20 shadow-lg"
-            : "bg-background/15 backdrop-blur-xl border-border/10"
-        } ${theme === "light" ? "bg-white/30 border-gray-200/20" : ""}`}
+        className="relative flex items-center justify-between w-full max-w-6xl px-5 py-2 rounded-full bg-background/10 backdrop-blur-2xl transition-all duration-300"
       >
+        {/* Animated gradient border */}
+        <div
+          className="absolute inset-0 rounded-full pointer-events-none"
+          style={{
+            padding: '1px',
+            background: 'linear-gradient(90deg, transparent 0%, hsl(189 100% 50% / 0.6) 30%, hsl(200 100% 70% / 0.8) 50%, hsl(189 100% 50% / 0.6) 70%, transparent 100%)',
+            backgroundSize: '200% 100%',
+            animation: 'border-glow-slide 3s linear infinite',
+            WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+            WebkitMaskComposite: 'xor',
+            maskComposite: 'exclude',
+          }}
+        />
         {/* Logo */}
         <button onClick={() => scrollToSection("home")} className="flex items-center gap-2 shrink-0">
           <img src={logo} alt="Logo" className="h-10 w-auto" />
@@ -84,10 +93,22 @@ const Navbar = () => {
           <a
             href="/resume-nishant-maurya.pdf"
             download
-            className="px-5 py-1.5 text-sm italic font-medium rounded-xl bg-foreground/10 backdrop-blur-xl border border-foreground/20 text-foreground hover:bg-foreground/20 transition-all"
+            className="relative px-5 py-1.5 text-sm italic font-medium rounded-full bg-foreground/5 backdrop-blur-xl text-foreground hover:bg-foreground/10 transition-all overflow-hidden"
             style={{ fontFamily: "'Great Vibes', cursive", letterSpacing: '0.03em' }}
           >
-            Download CV
+            <div
+              className="absolute inset-0 rounded-full pointer-events-none"
+              style={{
+                padding: '1px',
+                background: 'linear-gradient(90deg, transparent 0%, hsl(189 100% 50% / 0.6) 30%, hsl(200 100% 70% / 0.8) 50%, hsl(189 100% 50% / 0.6) 70%, transparent 100%)',
+                backgroundSize: '200% 100%',
+                animation: 'border-glow-slide 3s linear infinite',
+                WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                WebkitMaskComposite: 'xor',
+                maskComposite: 'exclude',
+              }}
+            />
+            <span className="relative z-10">Download CV</span>
           </a>
         </div>
 
