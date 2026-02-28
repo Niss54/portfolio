@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Award, Briefcase, Users, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import CertificateCard from "./CertificateCard";
 import { certifications } from "@/data/certifications";
 
