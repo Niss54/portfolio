@@ -89,12 +89,12 @@ const CertificationsSection = () => {
             </h2>
             <div className={`w-20 h-1 bg-gradient-to-r from-primary to-secondary ${isVisible ? "animate-slide-up delay-100" : "opacity-0"}`} />
           </div>
-          <a
-            href="/all-certificates"
+          <Link
+            to="/all-certificates"
             className={`px-5 py-2.5 text-sm font-medium rounded-xl border border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300 ${isVisible ? "animate-slide-up delay-200" : "opacity-0"}`}
           >
             View All Certificates →
-          </a>
+          </Link>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
