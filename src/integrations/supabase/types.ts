@@ -17,7 +17,9 @@ export type Database = {
       reviews: {
         Row: {
           created_at: string
+          edit_token: string | null
           id: string
+          image_url: string | null
           message: string
           name: string
           rating: number
@@ -25,7 +27,9 @@ export type Database = {
         }
         Insert: {
           created_at?: string
+          edit_token?: string | null
           id?: string
+          image_url?: string | null
           message: string
           name: string
           rating: number
@@ -33,7 +37,9 @@ export type Database = {
         }
         Update: {
           created_at?: string
+          edit_token?: string | null
           id?: string
+          image_url?: string | null
           message?: string
           name?: string
           rating?: number
