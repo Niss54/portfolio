@@ -56,7 +56,12 @@ const CertificateCard = ({ name, frontImage, backImage, description, isSpread }:
       <div
         ref={cardRef}
         className="cert-card-container"
-        style={{ perspective: "1000px" }}
+        style={{
+          perspective: "1000px",
+          filter: isFlipped
+            ? "drop-shadow(0 20px 40px rgba(0,200,255,0.15))"
+            : "drop-shadow(0 12px 24px rgba(0,0,0,0.35))",
+        }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
@@ -67,12 +72,9 @@ const CertificateCard = ({ name, frontImage, backImage, description, isSpread }:
             height: "360px",
             position: "relative",
             transformStyle: "preserve-3d",
-            transition: "transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease",
-            transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${isFlipped ? 180 + tilt.y : tilt.y}deg)`,
+            transition: "transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)",
+            transform: `rotateX(${tilt.x}deg) rotateY(${isFlipped ? 180 + tilt.y : tilt.y}deg)`,
             cursor: isSpread ? "pointer" : "default",
-            filter: isFlipped
-              ? "drop-shadow(0 20px 40px rgba(0,200,255,0.15))"
-              : "drop-shadow(0 12px 24px rgba(0,0,0,0.35))",
           }}
         >
           {/* ===== FRONT SIDE (Title Card) ===== */}
