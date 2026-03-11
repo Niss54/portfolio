@@ -126,15 +126,16 @@ export const NeonBlueBackground = memo(() => {
         ))}
       </div>
       
-      {/* Subtle grid pattern */}
+      {/* Subtle grid pattern with golden glow */}
       <div 
-        className="absolute inset-0 opacity-[0.025]"
+        className="absolute inset-0"
         style={{
           backgroundImage: `
-            linear-gradient(hsl(189 100% 50%) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(189 100% 50%) 1px, transparent 1px)
+            linear-gradient(hsl(42 60% 55% / 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, hsl(42 60% 55% / 0.06) 1px, transparent 1px)
           `,
           backgroundSize: '60px 60px',
+          animation: 'grid-golden-pulse 4s ease-in-out infinite',
         }}
       />
       
