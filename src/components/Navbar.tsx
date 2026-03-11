@@ -70,7 +70,7 @@ const Navbar = () => {
               key={link.id}
               onClick={() => scrollToSection(link.id)}
               className="px-4 py-1.5 text-sm italic text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-muted/30"
-              style={{ fontFamily: "'Great Vibes', cursive", letterSpacing: '0.03em' }}
+              style={{ fontFamily: "'Calisto MT', 'Book Antiqua', Palatino, serif", letterSpacing: '0.03em' }}
             >
               {link.label}
             </button>
