@@ -160,7 +160,7 @@ const GlassButton = ({ label, onClick, icon }: { label: string; onClick: () => v
         className="absolute inset-0 rounded-full pointer-events-none"
         style={{
           padding: '1px',
-          background: 'linear-gradient(90deg, transparent 0%, hsl(189 100% 50% / 0.6) 30%, hsl(200 100% 70% / 0.8) 50%, hsl(189 100% 50% / 0.6) 70%, transparent 100%)',
+          background: 'linear-gradient(90deg, transparent 0%, hsl(42 60% 55% / 0.6) 30%, hsl(42 80% 70% / 0.8) 50%, hsl(42 60% 55% / 0.6) 70%, transparent 100%)',
           backgroundSize: '200% 100%',
           animation: 'border-glow-slide 3s linear infinite',
           WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
