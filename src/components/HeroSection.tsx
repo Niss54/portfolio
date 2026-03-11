@@ -172,7 +172,7 @@ const GlassButton = ({ label, onClick, icon }: { label: string; onClick: () => v
       <span className="relative z-10 inline-block overflow-hidden">
         <span
           className={`inline-block transition-all duration-300 ${animating ? 'animate-btn-text-drop' : ''}`}
-          style={{ fontFamily: "'Great Vibes', cursive", letterSpacing: '0.03em' }}
+          style={{ fontFamily: "'Calisto MT', 'Book Antiqua', Palatino, serif", letterSpacing: '0.03em' }}
         >
           {label}
         </span>
