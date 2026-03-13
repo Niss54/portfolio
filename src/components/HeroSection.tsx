@@ -34,8 +34,21 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
-      {/* Spline 3D Background - Only for Hero */}
-      <SplineHeroBackground />
+      {/* Liquid Ether 3D Background - Only for Hero */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <LiquidEther
+          mouseForce={20}
+          cursorSize={100}
+          isViscous
+          viscous={30}
+          colors={["#5227FF", "#FF9FFC", "#B19EEF"]}
+          autoDemo
+          autoSpeed={0.5}
+          autoIntensity={2.2}
+          isBounce={false}
+          resolution={0.5}
+        />
+      </div>
       
       <div className="container mx-auto relative z-10">
         {/* Text Content - Left Aligned */}
