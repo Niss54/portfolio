@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Phone } from "lucide-react";
-import { SplineHeroBackground } from "./AnimatedBackground";
+import LiquidEther from "./LiquidEther";
 
 const HeroSection = () => {
   const titles = ["a Developer", "a Designer", "an AI Expert", "an Engineer", "a CEO"];
