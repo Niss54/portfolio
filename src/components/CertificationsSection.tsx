@@ -1,26 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { Award, Briefcase, Users, Calendar } from "lucide-react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import CertificateCard from "./CertificateCard";
 import { certifications } from "@/data/certifications";
 
-const stats = [
-  { icon: Briefcase, label: "Projects Done", value: 10, suffix: "+" },
-  { icon: Users, label: "Happy Clients", value: 10, suffix: "+" },
-  { icon: Calendar, label: "Years Experience", value: 1, suffix: "" },
-  { icon: Award, label: "Certifications", value: 25, suffix: "+" },
-];
-
-type Phase = "hidden" | "stacking" | "spread";
-
 const CertificationsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [phase, setPhase] = useState<Phase>("hidden");
   const sectionRef = useRef<HTMLElement>(null);
-  const displayCerts = certifications.slice(0, 4);
-  const total = displayCerts.length;
-  const centerIndex = Math.floor(total / 2);
+  const stats = [
+    { icon: Briefcase, label: "Projects Done", value: 10, suffix: "+" },
+    { icon: Users, label: "Happy Clients", value: 10, suffix: "+" },
+    { icon: Calendar, label: "Years Experience", value: 1, suffix: "" },
+    { icon: Award, label: "Certifications", value: certifications.length, suffix: "+" },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,13 +24,6 @@ const CertificationsSection = () => {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-    if (!isVisible) return;
-    setPhase("stacking");
-    const timer = setTimeout(() => setPhase("spread"), 1400);
-    return () => clearTimeout(timer);
-  }, [isVisible]);
 
   const CountUp = ({ end, duration = 2000 }: { end: number; duration?: number }) => {
     const [count, setCount] = useState(0);
@@ -56,30 +41,6 @@ const CertificationsSection = () => {
     return <span>{count}</span>;
   };
 
-  const getCardMotion = (index: number) => {
-    const isLeft = index < centerIndex;
-    const isCenter = index === centerIndex;
-    const stackRotate = (index - centerIndex) * 0.4;
-    const spreadOffset = (index - centerIndex) * 290;
-    const maxFanRotation = 5;
-    const fanRotation = centerIndex === 0 ? 0 : ((index - centerIndex) / centerIndex) * maxFanRotation;
-
-    return {
-      initial: {
-        x: isCenter ? 0 : isLeft ? -900 : 900,
-        y: 0, rotate: isCenter ? 0 : isLeft ? -20 : 20,
-        scale: 0.8, opacity: 0,
-      },
-      stacking: { x: 0, y: 0, rotate: stackRotate, scale: 1, opacity: 1 },
-      spread: { x: spreadOffset, y: 0, rotate: fanRotation, scale: 1, opacity: 1 },
-    };
-  };
-
-  const getZIndex = (index: number) => {
-    if (phase === "spread") return total - Math.abs(index - centerIndex);
-    return total - index;
-  };
-
   return (
     <section ref={sectionRef} className="py-20 px-6">
       <div className="container mx-auto">
@@ -92,7 +53,7 @@ const CertificationsSection = () => {
           </div>
           <Link
             to="/all-certificates"
-            className={`px-5 py-2.5 text-sm font-medium rounded-xl border border-primary/30 text-primary hover:bg-primary/10 transition-all duration-300 ${isVisible ? "animate-slide-up delay-200" : "opacity-0"}`}
+            className={`site-animated-chip px-5 py-2.5 text-sm font-medium rounded-xl text-primary hover:bg-primary/10 transition-all duration-300 ${isVisible ? "animate-slide-up delay-200" : "opacity-0"}`}
           >
             View All Certificates →
           </Link>
@@ -102,7 +63,7 @@ const CertificationsSection = () => {
           {stats.map((stat, index) => (
             <div
               key={stat.label}
-              className={`glass-strong rounded-2xl p-6 text-center border border-primary/20 group hover:scale-105 transition-all duration-500 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] ${isVisible ? "animate-slide-up" : "opacity-0"}`}
+              className={`glass-strong site-animated-surface rounded-2xl p-6 text-center border border-primary/20 group hover:scale-105 transition-all duration-500 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] ${isVisible ? "animate-slide-up" : "opacity-0"}`}
               style={{ animationDelay: `${200 + index * 100}ms` }}
             >
               <div className="relative inline-block mb-4">
@@ -123,60 +84,46 @@ const CertificationsSection = () => {
             Professional Certifications
           </h3>
 
-          <div className="relative overflow-x-auto overflow-y-visible pb-8" style={{ minHeight: "460px" }}>
-            <div
-              className="relative flex items-center justify-center"
-              style={{
-                minWidth: phase === "spread" ? `${total * 290}px` : "auto",
-                height: "420px",
-                margin: "0 auto",
-              }}
-            >
-              {displayCerts.map((cert, index) => {
-                const m = getCardMotion(index);
-                const target = phase === "spread" ? m.spread : phase === "stacking" ? m.stacking : m.initial;
-                return (
-                  <motion.div
-                    key={index}
-                    className="absolute"
-                    initial={m.initial}
-                    animate={target}
-                    transition={{
-                      type: "spring",
-                      stiffness: phase === "stacking" ? 90 : 55,
-                      damping: phase === "stacking" ? 12 : 16,
-                      bounce: phase === "stacking" ? 0.3 : 0,
-                      delay: phase === "stacking"
-                        ? Math.abs(index - centerIndex) * 0.05
-                        : phase === "spread" ? Math.abs(index - centerIndex) * 0.04 : 0,
-                    }}
-                    style={{ zIndex: getZIndex(index) }}
-                  >
-                    <CertificateCard
-                      name={cert.name}
-                      frontImage={cert.frontImage}
-                      backImage={cert.backImage}
-                      description={cert.description}
-                      isSpread={phase === "spread"}
-                    />
-                  </motion.div>
-                );
-              })}
+          <div className="relative overflow-hidden py-2">
+            <div className="cert-marquee-track">
+              {[...certifications, ...certifications].map((cert, index) => (
+                <div key={`${cert.name}-${index}`} className="cert-marquee-item">
+                  <CertificateCard
+                    name={cert.name}
+                    frontImage={cert.frontImage}
+                    backImage={cert.backImage}
+                    description={cert.description}
+                    isSpread={true}
+                  />
+                </div>
+              ))}
             </div>
           </div>
-
-          {phase === "spread" && (
-            <motion.p
-              className="text-center text-sm text-muted-foreground mt-4"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 }}
-            >
-              ← Scroll to browse • Click any card to flip →
-            </motion.p>
-          )}
         </div>
       </div>
+
+      <style>{`
+        .cert-marquee-track {
+          display: flex;
+          width: max-content;
+          gap: 24px;
+          animation: cert-marquee-left 90s linear infinite;
+          will-change: transform;
+        }
+
+        .cert-marquee-track:hover {
+          animation-play-state: paused;
+        }
+
+        .cert-marquee-item {
+          flex: 0 0 auto;
+        }
+
+        @keyframes cert-marquee-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </section>
   );
 };

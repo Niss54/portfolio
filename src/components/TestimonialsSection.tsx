@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import { Star, Send, Loader2, Upload, Edit2, X, CheckCircle, Camera } from "lucide-react";
+import { Star, Send, Loader2, Upload, Edit2, X, CheckCircle, Camera, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
 
 interface Review {
   id: string;
@@ -15,7 +16,11 @@ interface Review {
   edit_token: string | null;
 }
 
-const TestimonialsSection = () => {
+type TestimonialsSectionProps = {
+  mode?: "preview" | "full";
+};
+
+const TestimonialsSection = ({ mode = "full" }: TestimonialsSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -53,6 +58,8 @@ const TestimonialsSection = () => {
     return { avg: parseFloat((sum / reviews.length).toFixed(1)), total: reviews.length, distribution };
   }, [reviews]);
 
+  const titleRating = reviews.length > 0 ? `${overallRating.avg.toFixed(1)}★` : "No ratings yet";
+
   useEffect(() => {
     const fetchReviews = async () => {
       const { data, error } = await supabase
@@ -71,6 +78,9 @@ const TestimonialsSection = () => {
       )
       .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'reviews' },
         (payload) => setReviews((cur) => cur.map(r => r.id === (payload.new as Review).id ? payload.new as Review : r))
+      )
+      .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'reviews' },
+        (payload) => setReviews((cur) => cur.filter(r => r.id !== payload.old.id))
       )
       .subscribe();
     return () => { supabase.removeChannel(channel); };
@@ -179,6 +189,61 @@ const TestimonialsSection = () => {
 
   const editableIds = getEditableIds();
 
+  if (mode === "preview") {
+    return (
+      <section ref={sectionRef} className="py-20 px-6 relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/5 blur-[120px] rounded-full" />
+
+        <div className="container mx-auto relative">
+          <div className="text-center mb-12">
+            <h2 className={`text-4xl md:text-5xl font-bold glow-text mb-4 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
+              Client Reviews
+            </h2>
+            <p className={`text-xl md:text-2xl font-semibold text-primary ${isVisible ? 'animate-slide-up delay-100' : 'opacity-0'}`}>
+              {titleRating}
+            </p>
+            <div className={`w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto my-6 ${isVisible ? 'animate-slide-up delay-200' : 'opacity-0'}`} />
+            <p className={`text-muted-foreground text-lg ${isVisible ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
+              {reviews.length > 0
+                ? `Live average based on ${overallRating.total} review${overallRating.total !== 1 ? 's' : ''}`
+                : 'Be the first one to leave a review.'}
+            </p>
+          </div>
+
+          <div className={`max-w-3xl mx-auto ${isVisible ? 'animate-slide-up delay-400' : 'opacity-0'}`}>
+            <div className="glass-strong site-animated-surface site-animated-surface-2 rounded-3xl p-8 md:p-10 border-2 border-primary/20 glow-border text-center space-y-6">
+              <div>
+                <div className="text-5xl md:text-6xl font-bold glow-text mb-3">
+                  {reviews.length > 0 ? overallRating.avg.toFixed(1) : "--"}
+                </div>
+                <div className="flex justify-center gap-1 mb-3">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      className={`w-6 h-6 ${star <= Math.round(overallRating.avg) ? 'fill-primary text-primary' : 'text-muted-foreground/40'}`}
+                    />
+                  ))}
+                </div>
+                <p className="text-muted-foreground">
+                  {reviews.length > 0
+                    ? `Realtime score updates automatically when a new review is submitted.`
+                    : 'Submit a review to start the live rating.'}
+                </p>
+              </div>
+
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/reviews">
+                  Open Full Reviews Page
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section ref={sectionRef} className="py-20 px-6 relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/5 blur-[120px] rounded-full" />
@@ -186,7 +251,7 @@ const TestimonialsSection = () => {
       <div className="container mx-auto relative">
         <div className="text-center mb-16">
           <h2 className={`text-4xl md:text-5xl font-bold glow-text mb-4 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
-            Client Reviews
+            Client Reviews {reviews.length > 0 ? `• ${titleRating}` : ""}
           </h2>
           <div className={`w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 ${isVisible ? 'animate-slide-up delay-100' : 'opacity-0'}`} />
           <p className={`text-muted-foreground text-lg ${isVisible ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
@@ -197,7 +262,7 @@ const TestimonialsSection = () => {
         {/* Overall Rating */}
         {reviews.length > 0 && (
           <div className={`max-w-2xl mx-auto mb-12 ${isVisible ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
-            <div className="glass-strong rounded-3xl p-8 border border-primary/20 text-center">
+            <div className="glass-strong site-animated-surface rounded-3xl p-8 border border-primary/20 text-center">
               <div className="text-6xl font-bold glow-text mb-2">{overallRating.avg}</div>
               <div className="flex justify-center gap-1 mb-2">
                 {[1, 2, 3, 4, 5].map(s => (
@@ -227,7 +292,7 @@ const TestimonialsSection = () => {
 
         {/* Rating Form */}
         <div className={`max-w-2xl mx-auto mb-12 ${isVisible ? 'animate-slide-up delay-300' : 'opacity-0'}`}>
-          <div className="glass-strong rounded-3xl p-8 border-2 border-primary/20 glow-border">
+          <div className="glass-strong site-animated-surface site-animated-surface-2 rounded-3xl p-8 border-2 border-primary/20 glow-border">
             <h3 className="text-2xl font-bold mb-6 glow-text">
               {editingReviewId ? 'Edit Your Review' : 'Leave a Review'}
             </h3>
@@ -260,7 +325,7 @@ const TestimonialsSection = () => {
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 bg-background/50 border-2 border-primary/20 rounded-xl focus:outline-none focus:border-primary focus:shadow-[0_0_20px_hsl(189_100%_50%/0.4)] transition-all"
+                    className="site-animated-input w-full px-4 py-3 rounded-xl focus:outline-none transition-all"
                     placeholder="Enter your name"
                     disabled={isSubmitting}
                   />
@@ -271,7 +336,7 @@ const TestimonialsSection = () => {
                     type="text"
                     value={formData.role}
                     onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                    className="w-full px-4 py-3 bg-background/50 border-2 border-primary/20 rounded-xl focus:outline-none focus:border-primary focus:shadow-[0_0_20px_hsl(189_100%_50%/0.4)] transition-all"
+                    className="site-animated-input w-full px-4 py-3 rounded-xl focus:outline-none transition-all"
                     placeholder="e.g. CEO, Developer, Student"
                     disabled={isSubmitting}
                   />
@@ -295,7 +360,7 @@ const TestimonialsSection = () => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={4}
-                  className="w-full px-4 py-3 bg-background/50 border-2 border-primary/20 rounded-xl focus:outline-none focus:border-primary focus:shadow-[0_0_20px_hsl(189_100%_50%/0.4)] transition-all resize-none"
+                  className="site-animated-input w-full px-4 py-3 rounded-xl focus:outline-none transition-all resize-none"
                   placeholder="Share your experience..."
                   disabled={isSubmitting}
                 />
@@ -332,7 +397,7 @@ const TestimonialsSection = () => {
             {reviews.map((review, index) => (
               <div
                 key={review.id}
-                className={`glass-strong rounded-2xl p-6 border border-primary/20 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] transition-all duration-300 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}
+                className={`glass-strong site-animated-surface rounded-2xl p-6 border border-primary/20 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] transition-all duration-300 ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}
                 style={{ animationDelay: `${400 + index * 100}ms` }}
               >
                 <div className="flex items-start justify-between mb-4">
@@ -350,7 +415,7 @@ const TestimonialsSection = () => {
                     <div>
                       <div className="flex items-center gap-2">
                         <h4 className="text-lg font-semibold text-foreground">{review.name}</h4>
-                        <span className="inline-flex items-center gap-1 text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full border border-primary/20">
+                        <span className="site-animated-chip inline-flex items-center gap-1 text-xs text-primary px-2 py-0.5 rounded-full">
                           <CheckCircle className="w-3 h-3" /> Verified
                         </span>
                       </div>

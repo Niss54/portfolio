@@ -15,10 +15,24 @@ const CustomCursor = () => {
     let mouseY = 0;
     let cursorX = 0;
     let cursorY = 0;
+    let rafId = 0;
+    let hasPosition = false;
 
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+
+      if (!hasPosition) {
+        cursorX = mouseX;
+        cursorY = mouseY;
+        hasPosition = true;
+      }
+
+      const target = e.target as Element | null;
+      const isProjectCard = target?.closest?.('[data-project-cursor="view"]');
+
+      cursor.style.opacity = isProjectCard ? "0" : "1";
+
       // Dot follows instantly
       dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
     };
@@ -41,13 +55,13 @@ const CustomCursor = () => {
 
     // Smooth ring follow with lerp
     const animate = () => {
-      cursorX += (mouseX - cursorX) * 0.15;
-      cursorY += (mouseY - cursorY) * 0.15;
+      cursorX += (mouseX - cursorX) * 0.32;
+      cursorY += (mouseY - cursorY) * 0.32;
       if (ring) {
         ring.style.left = `${cursorX}px`;
         ring.style.top = `${cursorY}px`;
       }
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     };
 
     document.addEventListener("mousemove", onMouseMove);
@@ -69,6 +83,7 @@ const CustomCursor = () => {
       document.removeEventListener("mouseup", onMouseUp);
       document.removeEventListener("mouseenter", onMouseEnter);
       document.removeEventListener("mouseleave", onMouseLeave);
+      cancelAnimationFrame(rafId);
       document.body.style.cursor = "";
       style.remove();
     };
@@ -90,7 +105,7 @@ const CustomCursor = () => {
           top: 0,
           left: 0,
           transform: "translate(-50%, -50%) scale(1)",
-          transition: "transform 300ms ease-out, width 300ms ease-out, height 300ms ease-out",
+          transition: "transform 120ms ease-out, width 120ms ease-out, height 120ms ease-out",
           opacity: 0.5,
         }}
       />
@@ -103,7 +118,7 @@ const CustomCursor = () => {
           position: "fixed",
           top: 0,
           left: 0,
-          transition: "transform 50ms ease-out",
+          transition: "none",
         }}
       />
     </div>

@@ -69,7 +69,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group relative glass-strong rounded-2xl p-6 border border-primary/20 transition-all duration-500 hover:translate-y-[-10px] hover:shadow-[0_20px_60px_hsl(189_100%_50%/0.3)] ${
+              className={`group relative glass-strong site-animated-surface rounded-2xl p-6 border border-primary/20 transition-all duration-500 hover:translate-y-[-10px] hover:shadow-[0_20px_60px_hsl(189_100%_50%/0.3)] ${
                 isVisible ? 'animate-slide-up' : 'opacity-0'
               }`}
               style={{ animationDelay: `${400 + index * 100}ms` }}

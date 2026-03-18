@@ -239,6 +239,146 @@ All colors MUST be HSL.
     animation: particle-float 20s linear infinite;
   }
 
+  /* Unified button animation across the website (hero-style border, no inner blue glow) */
+  .site-animated-btn,
+  button:not(.no-site-button):not(.fixed) {
+    position: relative;
+    overflow: visible;
+    border-radius: 9999px;
+    background: hsl(0 0% 100% / 0.04);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(42 55% 58% / 0.45);
+    box-shadow: none !important;
+  }
+
+  .site-animated-btn:hover,
+  button:not(.no-site-button):not(.fixed):hover {
+    box-shadow: none !important;
+  }
+
+  .site-animated-btn::before,
+  button:not(.no-site-button):not(.fixed)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(42 55% 58% / 0.45) 30%,
+      hsl(42 72% 73% / 0.85) 50%,
+      hsl(42 55% 58% / 0.45) 70%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: border-glow-slide 3s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .site-animated-chip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    border-radius: 9999px;
+    background: hsl(0 0% 100% / 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(42 55% 58% / 0.45);
+  }
+
+  .site-animated-chip::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(42 55% 58% / 0.45) 30%,
+      hsl(42 72% 73% / 0.85) 50%,
+      hsl(42 55% 58% / 0.45) 70%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: border-glow-slide 3s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .site-animated-surface {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .site-animated-surface::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(42 55% 58% / 0.35) 28%,
+      hsl(42 72% 73% / 0.82) 50%,
+      hsl(42 55% 58% / 0.35) 72%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: border-glow-slide 3s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .site-animated-surface-2::before {
+    padding: 2px;
+  }
+
+  .site-animated-input {
+    border: 2px solid transparent;
+    background:
+      linear-gradient(hsl(217 80% 12% / 0.5), hsl(217 80% 12% / 0.5)) padding-box,
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        hsl(42 55% 58% / 0.35) 28%,
+        hsl(42 72% 73% / 0.82) 50%,
+        hsl(42 55% 58% / 0.35) 72%,
+        transparent 100%
+      ) border-box;
+    background-size: 100% 100%, 200% 100%;
+    animation: border-glow-slide 3s linear infinite;
+    box-shadow: none;
+  }
+
+  .site-animated-input:focus {
+    border-color: transparent;
+    background:
+      linear-gradient(hsl(217 80% 12% / 0.6), hsl(217 80% 12% / 0.6)) padding-box,
+      linear-gradient(
+        90deg,
+        transparent 0%,
+        hsl(42 55% 58% / 0.45) 28%,
+        hsl(42 72% 73% / 0.92) 50%,
+        hsl(42 55% 58% / 0.45) 72%,
+        transparent 100%
+      ) border-box;
+    background-size: 100% 100%, 200% 100%;
+    box-shadow: none;
+  }
+
   /* Delay utilities */
   .delay-100 { animation-delay: 0.1s; }
   .delay-200 { animation-delay: 0.2s; }

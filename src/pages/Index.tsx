@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import { NeonBlueBackground } from "@/components/AnimatedBackground";
+import HomeLiquidEtherBackground from "@/components/HomeLiquidEtherBackground";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -15,7 +15,6 @@ import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
 import ChatbotWidget from "@/components/ChatbotWidget";
 import SectionLighting from "@/components/SectionLighting";
-import CustomCursor from "@/components/CustomCursor";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,16 +40,13 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen">
-      <CustomCursor />
+      <HomeLiquidEtherBackground />
       <Navbar />
-      
-      {/* Hero Section - with Spline background */}
-      <HeroSection />
-      
-      {/* All other sections - with premium neon blue background */}
-      <div className="relative">
-        <NeonBlueBackground />
-        <div className="relative z-10">
+
+      <div className="relative z-10">
+        <HeroSection />
+
+        <div className="relative">
           <SectionLighting id="about" className="pt-8">
             <AboutSection />
           </SectionLighting>
@@ -68,7 +64,7 @@ const Index = () => {
           </SectionLighting>
           
           <SectionLighting id="reviews" className="pt-8">
-            <TestimonialsSection />
+            <TestimonialsSection mode="preview" />
           </SectionLighting>
           
           <SectionLighting id="certifications" className="pt-8">
@@ -86,7 +82,7 @@ const Index = () => {
           <Footer />
         </div>
       </div>
-      
+
       <ChatbotWidget />
     </div>
   );

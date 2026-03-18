@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Check } from "lucide-react";
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiLangchain, SiGooglecloud, SiMongodb, SiDocker } from "react-icons/si";
+import LogoLoop from "@/components/ui/LogoLoop";
 
 const SkillsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -7,7 +9,6 @@ const SkillsSection = () => {
 
   const categories = [
     {
-      number: "1",
       title: "Languages & Tools",
       subtitle: "Core programming & version control",
       items: [
@@ -18,7 +19,6 @@ const SkillsSection = () => {
       tags: ["Python", "JavaScript", "Java", "C", "Git"],
     },
     {
-      number: "2",
       title: "AI & Machine Learning",
       subtitle: "LLMs, agents, AI workflows",
       items: [
@@ -29,7 +29,6 @@ const SkillsSection = () => {
       tags: ["LangChain", "Hugging Face", "n8n", "Vertex AI"],
     },
     {
-      number: "3",
       title: "Full Stack & Cloud",
       subtitle: "Databases, cloud, web apps",
       items: [
@@ -40,6 +39,47 @@ const SkillsSection = () => {
       ],
       tags: ["Supabase", "MongoDB", "AWS", "Streamlit", "Docker"],
     },
+    {
+      title: "Mobile Application Development",
+      subtitle: "Android, iOS & cross-platform apps",
+      items: [
+        "Android App Development (Java, Kotlin)",
+        "iOS App Development (Swift, SwiftUI)",
+        "Cross-Platform Development (Flutter, React Native)",
+        "Mobile UI/UX Design (Material UI, Cupertino)",
+        "API Integration & RESTful Services",
+        "Push Notifications & App Permissions",
+        "App Performance Optimization",
+        "App Store & Play Store Deployment",
+        "Authentication, Payments & Security",
+      ],
+      tags: [
+        "Android",
+        "Kotlin",
+        "Swift",
+        "Flutter",
+        "React Native",
+        "REST API",
+        "Firebase",
+        "Push Notifications",
+        "UI/UX",
+        "App Store",
+        "Play Store",
+        "Firebase Auth",
+        "Mobile Security",
+      ],
+    },
+  ];
+
+  const techLogos = [
+    { node: <SiReact color="#61DAFB" />, title: "React" },
+    { node: <SiNextdotjs color="#FFFFFF" />, title: "Next.js" },
+    { node: <SiTypescript color="#3178C6" />, title: "TypeScript" },
+    { node: <SiTailwindcss color="#06B6D4" />, title: "Tailwind CSS" },
+    { node: <SiLangchain color="#39E58C" />, title: "LangChain" },
+    { node: <SiGooglecloud color="#4285F4" />, title: "Google Cloud" },
+    { node: <SiMongodb color="#47A248" />, title: "MongoDB" },
+    { node: <SiDocker color="#2496ED" />, title: "Docker" },
   ];
 
   useEffect(() => {
@@ -67,37 +107,32 @@ const SkillsSection = () => {
         <div className="space-y-12">
           {categories.map((cat, catIdx) => (
             <div
-              key={cat.number}
+              key={cat.title}
               className={`flex flex-col md:flex-row items-start gap-6 md:gap-12 ${
                 isVisible ? "animate-slide-up" : "opacity-0"
               }`}
               style={{ animationDelay: `${catIdx * 150}ms` }}
             >
-              {/* Number + Items (left) */}
-              <div className="flex items-start gap-6 flex-1">
-                <span className="text-6xl md:text-7xl font-bold text-muted-foreground/30 leading-none select-none">
-                  {cat.number}
-                </span>
-                <div className="space-y-3">
-                  {cat.items.map((item) => (
-                    <div key={item} className="flex items-center gap-2">
-                      <Check className="w-4 h-4 text-primary shrink-0" />
-                      <span className="text-foreground/90 text-sm md:text-base">
-                        {item}
-                      </span>
-                    </div>
-                  ))}
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {cat.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary border border-primary/30"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+              {/* Items (left) */}
+              <div className="space-y-3 flex-1">
+                {cat.items.map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <Check className="w-4 h-4 text-primary shrink-0" />
+                    <span className="text-foreground/90 text-sm md:text-base">
+                      {item}
+                    </span>
                   </div>
+                ))}
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {cat.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="site-animated-chip px-3 py-1 rounded-full text-xs font-medium text-primary"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
 
@@ -110,6 +145,18 @@ const SkillsSection = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className={`mt-14 ${isVisible ? "animate-slide-up delay-400" : "opacity-0"}`}>
+          <LogoLoop
+            logos={techLogos}
+            speed={95}
+            direction="right"
+            logoHeight={34}
+            gap={80}
+            pauseOnHover={false}
+            ariaLabel="Technology icons"
+          />
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, MapPin, Phone, Linkedin, Instagram, Send, MessageCircle } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin, Instagram, Send, MessageCircle, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 
@@ -71,24 +71,28 @@ const ContactSection = () => {
       label: "Gmail",
       href: "mailto:Nishantma05@gmail.com",
       color: "from-red-500 to-pink-500",
+      iconColor: "#EA4335",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/niss-visuals",
       color: "from-blue-600 to-blue-400",
+      iconColor: "#0A66C2",
     },
     {
       icon: Instagram,
       label: "Instagram",
       href: "https://bit.ly/3LMyPJM",
       color: "from-purple-500 to-pink-500",
+      iconColor: "#E1306C",
     },
     {
       icon: MessageCircle,
       label: "WhatsApp",
       href: "http://bit.ly/4oUt1MH",
       color: "from-green-500 to-emerald-400",
+      iconColor: "#25D366",
     },
   ];
 
@@ -119,8 +123,8 @@ const ContactSection = () => {
               className="group relative"
             >
               <div className={`absolute inset-0 bg-gradient-to-r ${social.color} blur-xl opacity-0 group-hover:opacity-70 transition-opacity rounded-full`} />
-              <div className="relative glass-strong p-4 rounded-full border border-primary/20 hover:scale-110 transition-all duration-300">
-                <social.icon className="w-6 h-6 text-foreground group-hover:text-primary transition-colors" />
+              <div className="relative glass-strong site-animated-surface p-4 rounded-full border border-primary/20 hover:scale-110 transition-all duration-300">
+                <social.icon className="w-6 h-6 transition-colors" style={{ color: social.iconColor }} />
               </div>
             </a>
           ))}
@@ -128,12 +132,12 @@ const ContactSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form with Glowing Inputs */}
-          <div className={`glass-strong rounded-3xl p-8 border-2 border-primary/20 glow-border ${isVisible ? 'animate-slide-up delay-500' : 'opacity-0'}`}>
+          <div className={`glass-strong site-animated-surface site-animated-surface-2 rounded-3xl p-8 border-2 border-primary/20 glow-border ${isVisible ? 'animate-slide-up delay-500' : 'opacity-0'}`}>
             <h3 className="text-2xl font-bold mb-6 glow-text">Send a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="flex items-center gap-2 text-sm font-medium mb-2">
-                  <Mail className="w-4 h-4 text-primary" />
+                  <User className="w-4 h-4 text-sky-400" />
                   Name
                 </label>
                 <input
@@ -144,7 +148,7 @@ const ContactSection = () => {
                   className={`w-full px-4 py-3 bg-background/50 border-2 rounded-xl focus:outline-none transition-all ${
                     errors.name 
                       ? 'border-red-500' 
-                      : 'border-primary/20 focus:border-primary focus:shadow-[0_0_20px_hsl(189_100%_50%/0.4)]'
+                      : 'site-animated-input'
                   }`}
                   placeholder="Your name"
                 />
@@ -153,7 +157,7 @@ const ContactSection = () => {
 
               <div>
                 <label className="flex items-center gap-2 text-sm font-medium mb-2">
-                  <Send className="w-4 h-4 text-primary" />
+                  <Mail className="w-4 h-4 text-red-400" />
                   Email
                 </label>
                 <input
@@ -164,7 +168,7 @@ const ContactSection = () => {
                   className={`w-full px-4 py-3 bg-background/50 border-2 rounded-xl focus:outline-none transition-all ${
                     errors.email 
                       ? 'border-red-500' 
-                      : 'border-primary/20 focus:border-primary focus:shadow-[0_0_20px_hsl(189_100%_50%/0.4)]'
+                      : 'site-animated-input'
                   }`}
                   placeholder="your@email.com"
                 />
@@ -173,7 +177,7 @@ const ContactSection = () => {
 
               <div>
                 <label className="flex items-center gap-2 text-sm font-medium mb-2">
-                  <MessageCircle className="w-4 h-4 text-primary" />
+                  <MessageCircle className="w-4 h-4 text-emerald-400" />
                   Message
                 </label>
                 <textarea
@@ -184,7 +188,7 @@ const ContactSection = () => {
                   className={`w-full px-4 py-3 bg-background/50 border-2 rounded-xl focus:outline-none transition-all resize-none ${
                     errors.message 
                       ? 'border-red-500' 
-                      : 'border-primary/20 focus:border-primary focus:shadow-[0_0_20px_hsl(189_100%_50%/0.4)]'
+                      : 'site-animated-input'
                   }`}
                   placeholder="Tell me about your project..."
                 />
@@ -202,9 +206,9 @@ const ContactSection = () => {
           <div className={`space-y-6 ${isVisible ? 'animate-slide-up delay-600' : 'opacity-0'}`}>
             {/* Quick Contact Cards */}
             <div className="space-y-4">
-              <div className="glass-strong rounded-2xl p-5 border border-primary/20 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] transition-all duration-300">
+              <div className="glass-strong site-animated-surface rounded-2xl p-5 border border-primary/20 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] transition-all duration-300">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-gradient-to-br from-primary to-secondary rounded-xl">
+                  <div className="p-3 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl">
                     <Mail className="w-5 h-5 text-foreground" />
                   </div>
                   <div>
@@ -214,9 +218,9 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="glass-strong rounded-2xl p-5 border border-primary/20 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] transition-all duration-300">
+              <div className="glass-strong site-animated-surface rounded-2xl p-5 border border-primary/20 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] transition-all duration-300">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-gradient-to-br from-secondary to-primary rounded-xl">
+                  <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-400 rounded-xl">
                     <Phone className="w-5 h-5 text-foreground" />
                   </div>
                   <div>
@@ -226,9 +230,9 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="glass-strong rounded-2xl p-5 border border-primary/20 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] transition-all duration-300">
+              <div className="glass-strong site-animated-surface rounded-2xl p-5 border border-primary/20 hover:shadow-[0_0_30px_hsl(189_100%_50%/0.3)] transition-all duration-300">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-gradient-to-br from-primary to-secondary rounded-xl">
+                  <div className="p-3 bg-gradient-to-br from-amber-500 to-rose-500 rounded-xl">
                     <MapPin className="w-5 h-5 text-foreground" />
                   </div>
                   <div>

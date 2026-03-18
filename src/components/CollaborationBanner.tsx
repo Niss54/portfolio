@@ -49,7 +49,7 @@ const CollaborationBanner = () => {
       </div>
 
       <div className="container mx-auto relative">
-        <div className={`glass-strong rounded-3xl p-12 md:p-16 text-center border-2 border-primary/30 glow-border ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
+        <div className={`glass-strong site-animated-surface site-animated-surface-2 rounded-3xl p-12 md:p-16 text-center border-2 border-primary/30 glow-border ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}>
           {/* Gradient Background Overlay */}
           <div 
             className="absolute inset-0 rounded-3xl opacity-30"

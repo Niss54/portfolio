@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import profileImage from "@/assets/about-profile.png";
+import MagicRings from "@/components/ui/MagicRings";
 
 const AboutSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,18 +34,65 @@ const AboutSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Photo Frame */}
+          {/* Photo + Rings */}
           <div className={`flex justify-center ${isVisible ? 'animate-slide-up delay-200' : 'opacity-0'}`}>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-xl opacity-50 animate-pulse-glow" />
-              <div className="relative w-80 h-80 rounded-2xl overflow-hidden border-2 border-primary/30 glass-strong">
-                <img 
-                  src={profileImage} 
-                  alt="Nishant Maurya"
-                  className="w-full h-full object-cover"
+            {/* outer wrapper — no overflow hidden, rings bleed freely */}
+            <div className="relative" style={{ width: '400px', height: '500px' }}>
+
+              {/* Rings — square canvas, absolutely centered on the wrapper */}
+              <div
+                className="pointer-events-none"
+                style={{
+                  position: 'absolute',
+                  width: '560px',
+                  height: '560px',
+                  left: '50%',
+                  top: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 0,
+                }}
+              >
+                <MagicRings
+                  color="#fc42ff"
+                  colorTwo="#42fcff"
+                  ringCount={6}
+                  speed={1}
+                  attenuation={12}
+                  lineThickness={2}
+                  baseRadius={0.28}
+                  radiusStep={0.08}
+                  scaleRate={0.09}
+                  opacity={0.95}
+                  blur={0}
+                  noiseAmount={0}
+                  rotation={0}
+                  ringGap={1.35}
+                  fadeIn={0.7}
+                  fadeOut={0.5}
+                  followMouse={false}
+                  mouseInfluence={0.2}
+                  hoverScale={1.2}
+                  parallax={0.05}
+                  clickBurst={false}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
+
+              {/* Image — NO wrapper div, absolutely centered via translate so no rectangular box */}
+              <img
+                src={profileImage}
+                alt="Nishant Maurya"
+                style={{
+                  position: 'absolute',
+                  left: '50%',
+                  top: '40%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '340px',
+                  height: '390px',
+                  objectFit: 'contain',
+                  zIndex: 10,
+                }}
+                className="drop-shadow-[0_20px_32px_rgba(0,0,0,0.6)]"
+              />
             </div>
           </div>
 

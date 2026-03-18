@@ -162,4 +162,10 @@ export const certifications: Certification[] = [
     frontImage: "/certificates/title-26.jpg",
     backImage: "/certificates/cert-25.jpg",
   },
+  {
+    name: "Prompt Engineering Bootcamp",
+    description: "Prompt Engineering Bootcamp - Completion Certificate",
+    frontImage: "/certificates/title-24.jpg",
+    backImage: "/certificates/cert-24.jpg",
+  },
 ];

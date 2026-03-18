@@ -1,11 +1,10 @@
 import { useEffect } from "react";
-import Navbar from "@/components/Navbar";
-import ProjectCard from "@/components/ProjectCard";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { projects } from "@/data/projects";
+import Navbar from "@/components/Navbar";
+import TestimonialsSection from "@/components/TestimonialsSection";
 
-const AllProjects = () => {
+const AllReviews = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,9 +14,9 @@ const AllProjects = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <section className="pt-28 pb-20 px-6">
+      <section className="pt-28 px-6">
         <div className="container mx-auto">
-          <div className="flex items-center gap-4 mb-12">
+          <div className="flex items-center gap-4 mb-4">
             <button
               onClick={() => navigate("/")}
               className="site-animated-chip p-2 rounded-xl text-primary hover:bg-primary/10 transition-all"
@@ -25,25 +24,15 @@ const AllProjects = () => {
               <ArrowLeft className="w-5 h-5" />
             </button>
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold glow-text">All Projects</h1>
+              <h1 className="text-4xl md:text-5xl font-bold glow-text">All Reviews</h1>
               <div className="w-20 h-1 bg-gradient-to-r from-primary to-secondary mt-3" />
             </div>
           </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <ProjectCard
-                key={project.title}
-                project={project}
-                animationClassName="animate-slide-up"
-                animationDelay={`${index * 100}ms`}
-              />
-            ))}
-          </div>
         </div>
       </section>
+      <TestimonialsSection mode="full" />
     </div>
   );
 };
 
-export default AllProjects;
+export default AllReviews;
