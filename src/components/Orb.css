@@ -1,0 +1,25 @@
+.orb-container {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.orb-photo-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(40%, 260px);
+  height: min(60%, 360px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.orb-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}

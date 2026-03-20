@@ -61,6 +61,7 @@ const CertificateCard = ({ name, frontImage, backImage, description, isSpread }:
     if (!showFullView) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
     return () => {
       document.body.style.overflow = previousOverflow;
     };
@@ -147,7 +148,7 @@ const CertificateCard = ({ name, frontImage, backImage, description, isSpread }:
           >
             <button
               onClick={() => setShowFullView(false)}
-              className="absolute top-4 right-4 z-20 p-2.5 glass-strong rounded-full border border-primary/30 text-foreground hover:text-primary hover:border-primary hover:shadow-[0_0_18px_hsl(189_100%_50%/0.35)] transition-all duration-300"
+              className="no-site-button absolute top-4 right-4 z-20 p-2.5 glass-strong rounded-full border border-primary/30 text-foreground hover:text-primary hover:border-primary hover:shadow-[0_0_18px_hsl(189_100%_50%/0.35)] transition-all duration-300"
             >
               <X className="w-5 h-5" />
             </button>

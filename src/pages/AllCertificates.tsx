@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
-import Plasma from "@/components/Plasma";
+import GradientBlinds from "@/components/GradientBlinds";
 import CertificateCard from "@/components/CertificateCard";
 import { certifications } from "@/data/certifications";
 
@@ -14,31 +14,32 @@ const AllCertificates = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Plasma
-          color="#ff6b35"
-          speed={0.6}
-          direction="forward"
-          scale={1.1}
-          opacity={0.75}
-          mouseInteractive={!isMobile}
-        />
+    <div className="relative min-h-screen bg-black text-foreground">
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-auto">
+          <GradientBlinds
+            gradientColors={['#ff6b35', '#ff1493', '#00bfff']}
+            angle={45}
+            noise={0.15}
+            blindCount={20}
+            blindMinWidth={60}
+            mouseDampening={0.2}
+            mirrorGradient={false}
+            spotlightRadius={0.6}
+            spotlightSoftness={1.2}
+            spotlightOpacity={0.8}
+            distortAmount={0.3}
+            shineDirection="left"
+            mixBlendMode="screen"
+            dpr={1}
+          />
+        </div>
       </div>
 
-      <div
-        className="absolute inset-0 z-[1] pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(180deg, hsl(220 70% 10% / 0.72) 0%, hsl(220 70% 8% / 0.78) 50%, hsl(220 70% 7% / 0.84) 100%)",
-        }}
-      />
-
-      <Navbar />
-      <section className="relative z-10 pt-28 pb-20 px-6">
+      <div className="relative z-10 overflow-hidden">
+        <Navbar />
+        <section className="relative pt-28 pb-20 px-6">
         <div className="container mx-auto">
           <div className="flex items-center gap-4 mb-12">
             <button
@@ -73,6 +74,7 @@ const AllCertificates = () => {
           </div>
         </div>
       </section>
+      </div>
     </div>
   );
 };

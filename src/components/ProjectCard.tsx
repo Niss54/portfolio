@@ -54,7 +54,7 @@ const ProjectCard = ({ project, animationDelay, animationClassName }: ProjectCar
       data-project-cursor="view"
       className={`group relative glass-strong site-animated-surface rounded-2xl overflow-hidden border border-primary/20 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_40px_hsl(189_100%_50%/0.4)] ${
         animationClassName ?? ""
-      } ${viewUrl ? "cursor-none" : ""}`}
+      }`}
       style={{
         animationDelay,
         ["--project-cursor-x" as string]: "50%",

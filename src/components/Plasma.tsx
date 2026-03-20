@@ -11,6 +11,8 @@ type PlasmaProps = {
   scale?: number;
   opacity?: number;
   mouseInteractive?: boolean;
+  maxDpr?: number;
+  targetFps?: number;
 };
 
 const hexToRgb = (hex: string): [number, number, number] => {
@@ -106,6 +108,8 @@ const Plasma = ({
   scale = 1,
   opacity = 1,
   mouseInteractive = true,
+  maxDpr = 1.25,
+  targetFps = 45,
 }: PlasmaProps) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mousePos = useRef({ x: 0, y: 0 });
@@ -123,7 +127,7 @@ const Plasma = ({
       webgl: 2,
       alpha: true,
       antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2),
+      dpr: Math.min(window.devicePixelRatio || 1, maxDpr),
     });
 
     const gl = renderer.gl;
@@ -185,8 +189,16 @@ const Plasma = ({
 
     let raf = 0;
     const t0 = performance.now();
+    let lastFrameTime = 0;
+    const frameInterval = 1000 / Math.max(1, targetFps);
 
     const loop = (t: number) => {
+      if (t - lastFrameTime < frameInterval) {
+        raf = requestAnimationFrame(loop);
+        return;
+      }
+      lastFrameTime = t;
+
       const timeValue = (t - t0) * 0.001;
       if (direction === "pingpong") {
         const pingpongDuration = 10;
@@ -221,7 +233,7 @@ const Plasma = ({
         // Canvas might already be removed during teardown race.
       }
     };
-  }, [color, speed, direction, scale, opacity, mouseInteractive]);
+  }, [color, speed, direction, scale, opacity, mouseInteractive, maxDpr, targetFps]);
 
   return <div ref={containerRef} className="plasma-container" />;
 };

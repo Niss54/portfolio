@@ -2,47 +2,17 @@ import { useEffect, useRef } from "react";
 
 const CustomCursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const cursor = cursorRef.current;
-    const ring = ringRef.current;
     const dot = dotRef.current;
-    if (!cursor || !ring || !dot) return;
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-    let rafId = 0;
-    let hasPosition = false;
+    if (!cursor || !dot) return;
 
     const onMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      cursor.style.opacity = "1";
 
-      if (!hasPosition) {
-        cursorX = mouseX;
-        cursorY = mouseY;
-        hasPosition = true;
-      }
-
-      const target = e.target as Element | null;
-      const isProjectCard = target?.closest?.('[data-project-cursor="view"]');
-
-      cursor.style.opacity = isProjectCard ? "0" : "1";
-
-      // Dot follows instantly
-      dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
-    };
-
-    const onMouseDown = () => {
-      ring.style.transform = `translate(-50%, -50%) scale(0.8)`;
-    };
-
-    const onMouseUp = () => {
-      ring.style.transform = `translate(-50%, -50%) scale(1)`;
+      dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
     };
 
     const onMouseEnter = () => {
@@ -53,23 +23,9 @@ const CustomCursor = () => {
       cursor.style.opacity = "0";
     };
 
-    // Smooth ring follow with lerp
-    const animate = () => {
-      cursorX += (mouseX - cursorX) * 0.32;
-      cursorY += (mouseY - cursorY) * 0.32;
-      if (ring) {
-        ring.style.left = `${cursorX}px`;
-        ring.style.top = `${cursorY}px`;
-      }
-      rafId = requestAnimationFrame(animate);
-    };
-
     document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mousedown", onMouseDown);
-    document.addEventListener("mouseup", onMouseUp);
     document.addEventListener("mouseenter", onMouseEnter);
     document.addEventListener("mouseleave", onMouseLeave);
-    animate();
 
     // Hide default cursor
     document.body.style.cursor = "none";
@@ -79,11 +35,8 @@ const CustomCursor = () => {
 
     return () => {
       document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mousedown", onMouseDown);
-      document.removeEventListener("mouseup", onMouseUp);
       document.removeEventListener("mouseenter", onMouseEnter);
       document.removeEventListener("mouseleave", onMouseLeave);
-      cancelAnimationFrame(rafId);
       document.body.style.cursor = "";
       style.remove();
     };
@@ -93,27 +46,13 @@ const CustomCursor = () => {
     <div
       ref={cursorRef}
       id="custom-cursor"
-      className="fixed pointer-events-none z-[9999]"
+      className="fixed pointer-events-none z-[10050]"
       style={{ mixBlendMode: "difference", opacity: 0, transition: "opacity 150ms ease-out" }}
     >
-      {/* Ring - follows with delay */}
-      <div
-        ref={ringRef}
-        id="cursor-ring"
-        className="absolute w-10 h-10 rounded-full border-2 border-white"
-        style={{
-          top: 0,
-          left: 0,
-          transform: "translate(-50%, -50%) scale(1)",
-          transition: "transform 120ms ease-out, width 120ms ease-out, height 120ms ease-out",
-          opacity: 0.5,
-        }}
-      />
-      {/* Dot - follows instantly */}
       <div
         ref={dotRef}
         id="cursor-dot"
-        className="w-4 h-4 rounded-full bg-white"
+        className="w-3 h-3 rounded-full bg-white"
         style={{
           position: "fixed",
           top: 0,

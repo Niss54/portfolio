@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import './LiquidEther.css';
 
 interface LiquidEtherProps {
   mouseForce?: number;
@@ -105,9 +106,9 @@ export default function LiquidEther({
 
       init(container: HTMLElement) {
         this.container = container;
-        this.pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+        this.pixelRatio = Math.min(window.devicePixelRatio || 1, 1.25);
         this.resize();
-        this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true, powerPreference: 'high-performance' });
         this.renderer.autoClear = false;
         this.renderer.setClearColor(new THREE.Color(0x000000), 0);
         this.renderer.setPixelRatio(this.pixelRatio);
@@ -1177,7 +1178,7 @@ export default function LiquidEther({
   return (
     <div
       ref={mountRef}
-      className={`relative overflow-hidden w-full h-full touch-none ${className}`}
+      className={`liquid-ether-container ${className || ''}`}
       style={style}
     />
   );

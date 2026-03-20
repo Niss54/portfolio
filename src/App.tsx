@@ -10,6 +10,10 @@ import NotFound from "./pages/NotFound";
 import AllProjects from "./pages/AllProjects";
 import AllCertificates from "./pages/AllCertificates";
 import AllReviews from "./pages/AllReviews";
+import Blog from "./pages/Blog";
+import AIServices from "./pages/AIServices";
+import Services from "./pages/Services";
+import Automation from "./pages/Automation";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +38,10 @@ const App = () => {
             <Route path="/all-projects" element={<AllProjects />} />
             <Route path="/all-certificates" element={<AllCertificates />} />
             <Route path="/reviews" element={<AllReviews />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/ai-services" element={<AIServices />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/automation" element={<Automation />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

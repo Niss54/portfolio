@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import HomeLiquidEtherBackground from "@/components/HomeLiquidEtherBackground";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -40,13 +39,12 @@ const Index = () => {
 
   return (
     <div className="relative min-h-screen">
-      <HomeLiquidEtherBackground />
       <Navbar />
 
       <div className="relative z-10">
         <HeroSection />
 
-        <div className="relative">
+        <div className="relative bg-black">
           <SectionLighting id="about" className="pt-8">
             <AboutSection />
           </SectionLighting>

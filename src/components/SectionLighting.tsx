@@ -14,15 +14,12 @@ const SectionLighting = ({ children, className = "", id }: SectionLightingProps)
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // One-time light reveal to avoid repeated flash while scrolling.
-        if (entry.isIntersecting && entry.intersectionRatio >= 0.12) {
-          setIsLightOn(true);
-          observer.disconnect();
-        }
+        // Keep only the section near the viewport center lit.
+        setIsLightOn(entry.isIntersecting);
       },
       { 
-        threshold: [0, 0.12, 0.3],
-        rootMargin: "-5% 0px -5% 0px"
+        threshold: 0,
+        rootMargin: "-40% 0px -40% 0px"
       }
     );
 
@@ -88,7 +85,7 @@ const SectionLighting = ({ children, className = "", id }: SectionLightingProps)
         className={`relative z-0 transition-all duration-700 ${
           isLightOn 
             ? 'opacity-100 [&_.glow-text]:drop-shadow-[0_0_20px_hsl(189_100%_50%/0.5)]' 
-            : 'opacity-90 brightness-95'
+            : 'opacity-25 brightness-[0.35] saturate-50'
         }`}
       >
         {children}
@@ -99,10 +96,10 @@ const SectionLighting = ({ children, className = "", id }: SectionLightingProps)
         className={`absolute inset-0 pointer-events-none transition-all duration-700 z-[5] ${
           isLightOn 
             ? 'opacity-0' 
-            : 'opacity-35'
+            : 'opacity-75'
         }`}
         style={{
-          background: 'radial-gradient(ellipse at center top, transparent 0%, hsl(222 47% 5% / 0.3) 50%, hsl(222 47% 5% / 0.6) 100%)',
+          background: 'radial-gradient(ellipse at center top, hsl(222 47% 5% / 0.15) 0%, hsl(222 47% 5% / 0.72) 45%, hsl(222 47% 3% / 0.92) 100%)',
         }}
       />
 

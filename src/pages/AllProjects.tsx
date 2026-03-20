@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import ProjectCard from "@/components/ProjectCard";
+import DarkVeil from "@/components/DarkVeil";
+import "@/components/DarkVeil.css";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { projects } from "@/data/projects";
@@ -13,10 +15,22 @@ const AllProjects = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
-      <section className="pt-28 pb-20 px-6">
-        <div className="container mx-auto">
+    <div className="min-h-screen bg-black text-foreground relative overflow-hidden">
+      {/* DarkVeil Background */}
+      <div className="fixed inset-0 z-0 darkveil-wrapper pointer-events-none">
+        <DarkVeil
+          hueShift={0}
+          noiseIntensity={0.03}
+          scanlineIntensity={0.06}
+          speed={0.5}
+          scanlineFrequency={1.2}
+          warpAmount={0.08}
+        />
+      </div>
+      <div className="relative z-10">
+        <Navbar />
+        <section className="pt-28 pb-20 px-6 relative">
+          <div className="container mx-auto relative z-10">
           <div className="flex items-center gap-4 mb-12">
             <button
               onClick={() => navigate("/")}
@@ -40,8 +54,9 @@ const AllProjects = () => {
               />
             ))}
           </div>
+          </div>
+        </section>
         </div>
-      </section>
     </div>
   );
 };

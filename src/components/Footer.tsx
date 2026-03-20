@@ -1,10 +1,252 @@
 import { ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
 import logo from "@/assets/logo.png";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const Footer = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const [isCookiesOpen, setIsCookiesOpen] = useState(false);
+  const termsOfServiceContent = `Terms of Service
+Last Updated: March 18, 2026
+
+1. Agreement to Terms
+By accessing and using the website https://www.nissh.info ("Website"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, you must not use this Website.
+
+These Terms constitute a legally binding agreement between you and Nishant Maurya, operating as Nissh.
+
+2. Services Offered
+We provide freelance and product-based digital services including full-stack web development, AI and automation solutions, mobile app development, API development, website design, optimization, and technical consulting.
+
+All project details, timelines, and deliverables are defined in separate project agreements.
+
+3. Project Engagement
+
+3.1 Proposal and Acceptance
+A project begins only after mutual agreement through written confirmation such as email or message.
+
+3.2 Scope of Work
+All work is defined in the agreed project scope. Any additional features or changes may result in additional charges and revised timelines.
+
+3.3 Client Responsibilities
+Clients agree to provide accurate requirements and materials, respond within three business days, give timely feedback, ensure they have rights to all provided content, and complete payments as agreed.
+
+Delays from the client side may result in changes to the project timeline.
+
+4. Payment Terms
+
+4.1 Pricing
+Project pricing depends on scope, complexity, and requirements.
+
+4.2 Payment Structure
+Typical payment structures include:
+Small projects: 50 percent upfront and 50 percent upon completion
+Medium projects: 40 percent upfront, 30 percent mid-stage, and 30 percent upon completion
+Large projects: milestone-based payments
+Hourly work: weekly or bi-weekly billing
+
+4.3 Payment Methods
+We accept payments via international methods such as bank transfer, payment gateways, or other agreed options.
+All payments must be made in United States Dollars (USD) unless otherwise agreed.
+
+4.4 Late Payments
+Payments are due within 7 days of invoice. Late payments may result in suspension of work, a 5 percent monthly late fee, or project termination after 14 days.
+
+4.5 Refund Policy
+Refunds depend on the stage of the project and agreed terms. Completed work and initial deposits are non-refundable.
+
+4.6 Invoices and Taxes
+Invoices will be provided for all payments. Any applicable taxes will be handled as per relevant laws.
+
+5. Intellectual Property Rights
+
+5.1 Client Ownership
+Upon full payment, clients receive ownership of final deliverables, excluding third-party tools, libraries, reusable modules, and internal systems.
+
+5.2 Portfolio Rights
+We reserve the right to showcase completed work in our portfolio unless restricted by a non-disclosure agreement.
+
+5.3 Client Materials
+Clients grant permission to use provided materials solely for project execution.
+
+6. Confidentiality
+All client data and project details are treated as confidential. Non-disclosure agreements can be signed if required.
+
+7. Data and Privacy
+We may collect basic client information necessary for project execution. We do not sell or misuse personal data and use it only for service delivery.
+
+8. AI Services Disclaimer
+AI-based outputs may not always be fully accurate. Clients are responsible for reviewing and validating results before use. We are not liable for decisions made based on AI-generated outputs.
+
+9. Warranties
+
+9.1 Quality Assurance
+We ensure that work meets agreed requirements, follows industry standards, and includes a 30-day bug fix period for issues related to our work.
+
+9.2 Limitations
+We do not guarantee business outcomes, revenue growth, search rankings, or compatibility with future technologies.
+
+10. Hosting and Third-Party Services
+We are not responsible for hosting issues, server downtime, or third-party services unless explicitly included in the agreement.
+
+11. Limitation of Liability
+Our total liability is limited to the amount paid for the specific project. We are not responsible for indirect damages or data loss.
+
+12. Project Cancellation
+
+12.1 Client Cancellation
+Clients may cancel projects at any time. Payment for completed work is required and advance payments are non-refundable.
+
+12.2 Termination Rights
+We may terminate a project if payments are delayed, terms are violated, requests are illegal or unethical, or communication prevents progress.
+
+13. Maintenance and Support
+Support beyond the initial 30-day period is chargeable unless included in a separate maintenance agreement.
+
+14. Website Usage Rules
+Users must not use the website for illegal purposes, attempt unauthorized access, copy content without permission, or upload harmful software.
+
+15. Indemnification
+You agree to hold us harmless from any claims or damages resulting from misuse of services or violation of these Terms.
+
+16. Dispute Resolution
+Disputes will first be resolved through mutual discussion. Legal matters will be governed by the laws of India, with jurisdiction in Lucknow, Uttar Pradesh.
+
+17. Changes to Terms
+We reserve the right to update these Terms at any time. Continued use of the website indicates acceptance of the updated Terms.
+
+18. Severability
+If any provision is found invalid, the remaining provisions will remain in effect.
+
+19. Contact Information
+Name: Nishant Maurya
+Website: https://www.nissh.info
+Email: nishantma05@gmail.com
+
+By using our services, you agree to these Terms of Service.`;
+
+  const privacyPolicyContent = `Privacy Policy
+Last Updated: March 18, 2026
+
+1. Introduction
+Welcome to Nissh, operated by Nishant Maurya. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website https://www.nissh.info.
+
+By using this website, you agree to the terms of this Privacy Policy. If you do not agree, please do not use the website.
+
+2. Information We Collect
+
+2.1 Personal Information
+We may collect personal information that you voluntarily provide when you:
+
+Fill out contact forms
+Request a consultation or service
+Communicate with us through the website
+
+This may include:
+
+Name
+Email address
+Phone number
+Project details and requirements
+Any other information you choose to provide
+
+2.2 Automatically Collected Information
+When you visit our website, certain information may be collected automatically, such as:
+
+IP address
+Browser type and version
+Operating system
+Pages visited and time spent
+Device type
+Approximate location (city or country level)
+
+3. How We Use Your Information
+We use the collected information to:
+
+Respond to inquiries and provide support
+Communicate regarding projects and services
+Improve website performance and user experience
+Analyze traffic and usage patterns
+Maintain security and prevent misuse
+Comply with legal obligations
+
+4. Cookies and Tracking Technologies
+We use cookies and similar technologies to enhance user experience. Cookies are small files stored on your device.
+
+Types of cookies we use include:
+
+Essential cookies for website functionality
+Analytics cookies to understand usage
+Preference cookies to remember settings
+
+You can manage or disable cookies through your browser settings.
+
+5. Third-Party Services
+We may use third-party services such as:
+
+Analytics tools (for traffic analysis)
+Hosting providers
+Communication tools
+
+These services may collect and process data according to their own privacy policies.
+
+6. Data Security
+We take appropriate measures to protect your information, including:
+
+Secure HTTPS connections
+Reliable hosting infrastructure
+Limited access to sensitive data
+
+However, no online system is completely secure, and we cannot guarantee absolute security.
+
+7. Data Retention
+We retain personal data only as long as necessary for service purposes or legal requirements.
+
+8. Your Rights
+Depending on applicable laws, you may have the right to:
+
+Access your data
+Correct inaccurate data
+Request deletion of your data
+Restrict or object to processing
+
+To exercise your rights, contact us using the details below.
+
+9. International Data Transfers
+Your data may be processed in different locations depending on services used. We ensure reasonable safeguards are applied.
+
+10. Children's Privacy
+This website is not intended for individuals under the age of 13. We do not knowingly collect data from children.
+
+11. Changes to This Policy
+We may update this Privacy Policy from time to time. Updated versions will be posted on this page.
+
+12. Contact Information
+Name: Nishant Maurya
+Website: https://www.nissh.info
+Email: nishantma05@gmail.com
+
+By using this website, you agree to this Privacy Policy.`;
+
+  const cookiesContent = `# Cookies Policy
+
+Last Updated: March 18, 2026
+
+We use cookies and similar technologies to improve user experience, analyze traffic, and support core website functionality.
+
+What We Use Cookies For
+
+* Basic site functionality
+* Performance and analytics
+* Remembering user preferences
+
+ Your Choice
+
+You can control or disable cookies through your browser settings. Disabling some cookies may affect website functionality.
+
+By continuing to use this website, you consent to the use of cookies as described above.`;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +290,7 @@ const Footer = () => {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-primary/5 blur-[100px] rounded-full" />
 
         <div className="container mx-auto relative">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+          <div className="grid md:grid-cols-2 lg:[grid-template-columns:minmax(220px,1.3fr)_auto_auto_auto_auto_minmax(200px,1fr)] gap-y-12 gap-x-8 lg:gap-x-14 mb-12 items-start">
             {/* Brand Section */}
             <div className="space-y-4">
               <img src={logo} alt="Niss Visuals" className="h-12 w-auto" />
@@ -87,6 +329,80 @@ const Footer = () => {
                   InternAI
                 </a>
                 <p className="text-muted-foreground">limpio</p>
+                <a
+                  href="/all-projects"
+                  className="text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  Project
+                </a>
+                <a
+                  href="/blog"
+                  className="text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  Blog
+                </a>
+              </div>
+            </div>
+
+            {/* Resources Links */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-foreground">Resources</h4>
+              <div className="flex flex-col gap-2">
+                <a
+                  href="/services#faq"
+                  className="text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  FAQ
+                </a>
+                <a
+                  href="/ai-services#automation"
+                  className="text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  Tech Stack
+                </a>
+                <a
+                  href="/reviews"
+                  className="text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  Testimonials
+                </a>
+                <a
+                  href="/ai-services#pricing"
+                  className="text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  Pricing
+                </a>
+              </div>
+            </div>
+
+            {/* Services Links */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-foreground">Services</h4>
+              <div className="flex flex-col gap-2">
+                <a
+                  href="/ai-services#ai-integration"
+                  className="text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  AI Integration
+                </a>
+                <a
+                  href="/services"
+                  className="text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  Web Development
+                </a>
+                <a
+                  href="/automation"
+                  className="text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  Automation
+                </a>
+                <a
+                  href="/ai-services#case-studies"
+                  className="text-muted-foreground hover:text-primary transition-colors w-fit"
+                >
+                  Case Studies
+                </a>
               </div>
             </div>
 
@@ -177,15 +493,123 @@ const Footer = () => {
 
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-muted-foreground text-sm">
-              © {new Date().getFullYear()} Nishant Maurya. All rights reserved.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Designed & Built with <span className="text-primary">♥</span> by Nishant
-            </p>
+            <div className="max-w-3xl text-center md:text-left space-y-2">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                By using this website, you agree to our Terms of Service. Services are delivered based on agreed project scope and payment milestones, client data is handled responsibly, and our liability is limited to the amount paid for the project under applicable Indian law.
+              </p>
+              <p className="text-muted-foreground text-sm">
+                © {new Date().getFullYear()} Nishant Maurya. All rights reserved.
+              </p>
+            </div>
+            <div className="flex flex-col items-center md:items-end gap-2">
+              <div className="flex items-center gap-4 text-sm">
+                <a
+                  href="#terms-of-service"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setIsTermsOpen(true);
+                  }}
+                  className="text-muted-foreground hover:text-primary transition-colors underline underline-offset-4"
+                >
+                  Terms of Service
+                </a>
+                <a
+                  href="#privacy-policy"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setIsPrivacyOpen(true);
+                  }}
+                  className="text-muted-foreground hover:text-primary transition-colors underline underline-offset-4"
+                >
+                  Privacy Policy
+                </a>
+                <a
+                  href="#cookies"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setIsCookiesOpen(true);
+                  }}
+                  className="text-muted-foreground hover:text-primary transition-colors underline underline-offset-4"
+                >
+                  Cookies
+                </a>
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Designed & Built with <span className="text-primary">♥</span> by Nishant
+              </p>
+            </div>
           </div>
         </div>
       </footer>
+
+      <Dialog open={isTermsOpen} onOpenChange={setIsTermsOpen}>
+        <DialogContent className="w-[95vw] max-w-5xl max-h-[90vh] overflow-hidden border border-primary/30 bg-black text-white p-0 sm:rounded-2xl">
+          <DialogHeader className="border-b border-white/10 px-6 py-4 text-left">
+            <div className="flex items-center justify-between gap-3">
+              <DialogTitle className="text-xl text-white">Terms of Service</DialogTitle>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsTermsOpen(false)}
+                  className="rounded-md border border-white/20 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/10 transition-colors"
+                >
+                  Back
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsTermsOpen(false)}
+                  className="rounded-md border border-white/20 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/10 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </DialogHeader>
+          <div className="max-h-[calc(90vh-76px)] overflow-y-auto px-6 py-5">
+            <pre className="whitespace-pre-wrap text-sm leading-7 font-sans text-white/90">{termsOfServiceContent}</pre>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isCookiesOpen} onOpenChange={setIsCookiesOpen}>
+        <DialogContent className="w-[95vw] max-w-3xl max-h-[85vh] overflow-hidden border border-primary/30 bg-black text-white p-0 sm:rounded-2xl">
+          <DialogHeader className="border-b border-white/10 px-6 py-4 text-left">
+            <div className="flex items-center justify-between gap-3">
+              <DialogTitle className="text-xl text-white">Cookies</DialogTitle>
+              <button
+                type="button"
+                onClick={() => setIsCookiesOpen(false)}
+                className="rounded-md border border-white/20 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/10 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </DialogHeader>
+          <div className="max-h-[calc(85vh-76px)] overflow-y-auto px-6 py-5">
+            <pre className="whitespace-pre-wrap text-sm leading-7 font-sans text-white/90">{cookiesContent}</pre>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={isPrivacyOpen} onOpenChange={setIsPrivacyOpen}>
+        <DialogContent className="w-[95vw] max-w-5xl max-h-[90vh] overflow-hidden border border-primary/30 bg-black text-white p-0 sm:rounded-2xl">
+          <DialogHeader className="border-b border-white/10 px-6 py-4 text-left">
+            <div className="flex items-center justify-between gap-3">
+              <DialogTitle className="text-xl text-white">Privacy Policy</DialogTitle>
+              <button
+                type="button"
+                onClick={() => setIsPrivacyOpen(false)}
+                className="rounded-md border border-white/20 px-3 py-1.5 text-xs font-medium text-white/90 hover:bg-white/10 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </DialogHeader>
+          <div className="max-h-[calc(90vh-76px)] overflow-y-auto px-6 py-5">
+            <pre className="whitespace-pre-wrap text-sm leading-7 font-sans text-white/90">{privacyPolicyContent}</pre>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* Back to Top Button */}
       {showBackToTop && (

@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Phone } from "lucide-react";
+import LiquidEther from "./LiquidEther";
+import Orb from "./Orb";
 
 const HeroSection = () => {
   const titles = ["a Developer", "a Designer", "an AI Expert", "an Engineer", "a CEO"];
@@ -32,7 +34,42 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden bg-black">
+      <div className="absolute inset-0 -z-0" style={{ width: '100%', height: '100%', position: 'absolute' }}>
+        <LiquidEther
+          colors={[ '#5227FF', '#FF9FFC', '#B19EEF' ]}
+          mouseForce={11}
+          cursorSize={56}
+          isViscous
+          viscous={24}
+          iterationsViscous={18}
+          iterationsPoisson={20}
+          resolution={0.35}
+          isBounce={false}
+          autoDemo
+          autoSpeed={0.35}
+          autoIntensity={1.7}
+          takeoverDuration={0.25}
+          autoResumeDelay={3000}
+          autoRampDuration={0.6}
+        />
+      </div>
+
+      <div className="absolute inset-y-0 right-0 z-20 hidden lg:flex items-center justify-end pr-6 xl:pr-10 pointer-events-none">
+        <div
+          className="relative pointer-events-auto"
+          style={{ width: 'min(54vw, 780px)', height: 'min(82vh, 760px)' }}
+        >
+          <Orb
+            hoverIntensity={2}
+            rotateOnHover
+            hue={0}
+            forceHoverState={false}
+            backgroundColor="#000000"
+          />
+        </div>
+      </div>
+
       <div className="container mx-auto relative z-10">
         {/* Text Content - Left Aligned */}
         <div className="max-w-3xl space-y-6">
