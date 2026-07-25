@@ -1,24 +1,23 @@
 <!-- Banner -->
 <div align="center">
 
-<img src="https://img.shields.io/badge/APL-2025-red?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Track-Healthcare-brightgreen?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Team-Syntrix-blueviolet?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Portfolio-nissh.info-blueviolet?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Open_To-Hire-brightgreen?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Made_With-❤️-red?style=for-the-badge" />
 
-# 🏥 Saarthi AI
-### *Intelligent OPD Triage & Queue Management for KGMU Lucknow*
+# 🚀 Nishant Maurya — Portfolio
+### *Developer · Designer · AI Expert · Engineer · CEO*
 
-> **"5,000 patients walk into KGMU every day. Saarthi AI ensures the most critical ones are never lost in the queue."**
+> **"Building smart, modern, and scalable web experiences that make an impact. Let's turn your idea into reality."**
 
 [![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![Gemini AI](https://img.shields.io/badge/Gemini_AI-4285F4?style=flat-square&logo=google&logoColor=white)](https://deepmind.google/technologies/gemini/)
-[![LiveKit](https://img.shields.io/badge/LiveKit-FF5722?style=flat-square&logo=webrtc&logoColor=white)](https://livekit.io/)
-[![Sarvam AI](https://img.shields.io/badge/Sarvam_AI-FF6B35?style=flat-square)](https://sarvam.ai/)
-[![WebSocket](https://img.shields.io/badge/WebSocket-010101?style=flat-square&logo=socket.io&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 
-[🚀 Live Demo](#) · [📖 Documentation](#) · [🐛 Report Bug](https://github.com/Niss54/Saarthi-AI-Triage/issues) · [💡 Request Feature](https://github.com/Niss54/Saarthi-AI-Triage/issues)
+[🌐 Live Site](https://nissh.info) · [📄 Download CV](https://nissh.info/resume-nishant-maurya.pdf) · [💬 WhatsApp](http://bit.ly/4oUt1MH) · [🐛 Report Bug](https://github.com/Niss54/portfolio/issues)
 
 </div>
 
@@ -26,266 +25,280 @@
 
 ## 📋 Table of Contents
 
-- [Problem Statement](#1-problem-statement)
-- [Solution Overview](#2-solution-overview)
-- [Key Features](#3-key-features)
-- [Tech Stack](#4-tech-stack)
-- [Agent Workflow](#5-agent-workflow)
-- [System Architecture](#6-system-architecture)
-- [Getting Started](#7-getting-started)
-- [Screenshots](#8-screenshots)
-- [Team](#9-team)
-- [License](#10-license)
+- [About](#1-about)
+- [Features](#2-features)
+- [Tech Stack](#3-tech-stack)
+- [Projects](#4-projects)
+- [Skills & Expertise](#5-skills--expertise)
+- [Services](#6-services)
+- [Achievements & Certifications](#7-achievements--certifications)
+- [Getting Started](#8-getting-started)
+- [Connect With Me](#9-connect-with-me)
 
 ---
 
-## 1. 🚨 Problem Statement
+## 1. 👋 About
 
-**KGMU (King George's Medical University), Lucknow** is one of North India's busiest hospitals, handling a massive daily patient load:
+Hey! I'm **Nishant Maurya** — a Founder, full stack developer, and AI enthusiast from Lucknow, India.
 
-| Challenge | Impact |
-|-----------|--------|
-| 🏥 5,000+ OPD patients daily | Extreme overcrowding |
-| ❌ No intelligent prioritization system | Critical cases missed |
-| ⚠️ Manual triage process | Slow & error-prone |
-| 💔 Cardiac patients wait with minor cases | Life-threatening delays |
-| 🏙️ Lucknow Civil Hospital faces same challenge | Systemic problem |
-
-> Manual triage is **slow**, **error-prone**, and in a high-stakes environment like this — **life-threatening**.
+- 🏗️ Founder of **InternAI** and **Limpio**
+- 🏆 Active hackathon participant with national-level wins
+- 🤖 Certified in Generative AI via Microsoft, Google, and industry programs
+- 💡 Passionate about solving real-world problems through technology
+- 🔍 Actively seeking fast-paced tech environments to build and contribute
 
 ---
 
-## 2. 💡 Solution Overview
+## 2. ✨ Features
 
-**Saarthi AI** is an intelligent, multi-modal patient triage agent that automatically prioritizes patients based on symptom severity using AI — so the right patient gets help at the right time.
+This portfolio is built with a focus on **immersive design** and **smooth interactions**:
 
-### What It Does
-
-- 🎙️ **Accepts patient input** via Text, Voice (Hindi + English), or Prescription Image
-- 🤖 **AI-powered triage** using Gemini AI to analyze symptom severity
-- 🚨 **Emergency escalation** — critical patients bypass queue and receive EMG tokens instantly
-- 🏥 **Smart routing** — assigns departments and doctors based on condition
-- 📡 **Real-time dashboard** — live queue updates via WebSocket for hospital staff
-- 📜 **Prescription OCR** — reads physical prescriptions and auto-fills patient data
-
----
-
-## 3. ✨ Key Features
-
-### 🗣️ Multi-Modal Patient Intake
-- Voice input in **Hindi & English** powered by Sarvam AI (STT + TTS)
-- WhatsApp-style chat interface for patient-facing interaction
-- OCR-based prescription upload for quick history capture
-
-### 🧠 AI-Driven Risk Assessment
-- Gemini AI analyzes symptoms, vitals, and medical history
-- Classifies into **Critical / Moderate / Low** severity in real-time
-- NLP-powered contextual understanding of patient descriptions
-
-### 🚑 Emergency Protocol
-- **Critical patients** get EMG (Emergency) tokens with priority override
-- Instant notification to emergency department
-- Zero queue wait for life-threatening cases
-
-### 📊 Live Hospital Dashboard
-- WebSocket-powered real-time queue visualization
-- Doctor and room assignment displayed per patient
-- ETA estimation for waiting patients
-- Staff can see patient severity at a glance
-
-### 🌐 Hindi-First Accessibility
-- Entire patient flow available in Hindi via Sarvam AI
-- Designed for semi-urban and rural patients unfamiliar with English
-- Voice-based interaction requires zero digital literacy
+| Feature | Description |
+|---------|-------------|
+| 🌊 **Liquid Ether Background** | Interactive fluid animation that reacts to mouse movement |
+| 🔮 **3D Orb** | WebGL-powered rotating orb on the hero section |
+| 🎯 **Custom Cursor** | Smooth custom cursor with pointer effects |
+| 🌌 **Animated Backgrounds** | Multiple canvas-based animation layers |
+| 💎 **Glass Morphism UI** | Backdrop blur + glass effect cards throughout |
+| 🔄 **Circular Gallery** | 3D rotating certificate gallery |
+| 🌓 **Dark / Light Mode** | Full theme toggle support |
+| 📡 **Real-time Reviews** | Supabase-powered live testimonials with star ratings |
+| 🤖 **AI Chatbot Widget** | Built-in floating chatbot for visitor interaction |
+| 💬 **Splash Cursor** | Colorful liquid splash effect following the cursor |
+| 🎨 **Gradient Blinds** | Animated gradient reveal transition effects |
+| 📱 **Fully Responsive** | Mobile-first, works on all screen sizes |
 
 ---
 
-## 4. 🛠️ Tech Stack
+## 3. 🛠️ Tech Stack
 
-### Frontend
+### Core
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| React | ^18.3.1 | UI Framework |
+| TypeScript | ^5.8.3 | Type Safety |
+| Vite | ^5.4.19 | Build Tool & Dev Server |
+| Tailwind CSS | ^3.4.17 | Styling |
+
+### UI & Animation
 | Technology | Purpose |
 |-----------|---------|
-| React + Vite + TypeScript | Core web application |
-| Web Speech API | Browser-native voice agent |
-| WebSocket Client | Real-time queue updates |
-| WhatsApp Chat UI | Patient-friendly interface |
+| Framer Motion | Page & component animations |
+| Three.js | WebGL 3D Orb effect |
+| OGL | WebGL fluid simulation |
+| shadcn/ui + Radix UI | Accessible UI components |
+| Lucide React | Icon library |
+| React Icons | Extended icon set |
+| Recharts | Charts & data visualization |
+| Embla Carousel | Smooth carousel |
 
-### Backend
+### Backend & Data
 | Technology | Purpose |
 |-----------|---------|
-| FastAPI + Python | REST API & WebSocket server |
-| Triage Engine | Symptom analysis & scoring |
-| OCR Endpoint | Prescription image processing |
-
-### AI Layer
-| Technology | Purpose |
-|-----------|---------|
-| Gemini AI | Symptom analysis & NLP |
-| Sarvam AI | Hindi STT (Speech-to-Text) + TTS |
-| LiveKit | Real-time audio/video streaming |
+| Supabase | Database, real-time reviews, auth |
+| TanStack Query | Data fetching & caching |
+| React Hook Form + Zod | Form validation |
+| React Router DOM | Client-side routing |
 
 ---
 
-## 5. 🤖 Agent Workflow
+## 4. 🧩 Projects
 
-> **5 AI Agents Working Together in a Coordinated Pipeline**
-
-```
-Patient Input          Intake Agent         Risk Triage Agent
-(Text/Voice/Image) ──► Symptom Collection ──► Gemini AI Analysis
-                                                      │
-                                              ┌───────▼────────┐
-                                              │   Severity?    │
-                                              └───────┬────────┘
-                                                      │
-                          ┌───────────────────────────┤
-                          │                           │
-                    CRITICAL ▼                MODERATE/LOW ▼
-              Emergency Agent           Department Router Agent
-            Priority Override           Assign Dept + Doctor
-              EMG Token                         │
-                          │                     │
-                          └─────────┬───────────┘
-                                    │
-                             Handoff Agent
-                          Token + Room + ETA
-                                    │
-                             Dashboard Agent
-                              WebSocket Live
-```
-
-### Agent Descriptions
-
-| Agent | Role |
-|-------|------|
-| **Intake Agent** | Collects patient symptoms via text, voice, or image |
-| **Risk Triage Agent** | Runs Gemini AI analysis on all inputs |
-| **Emergency Agent** | Triggers priority override for critical cases |
-| **Department Router** | Routes moderate/low cases to correct dept + doctor |
-| **Handoff Agent** | Generates token, room assignment, and ETA |
-| **Dashboard Agent** | Pushes live updates via WebSocket to hospital screen |
+| # | Project | Description | Tags | Demo |
+|---|---------|-------------|------|------|
+| 1 | **NeuroSense AI** | Real-time emotion & cognitive load tracker with privacy-first, on-device intelligence | AI · React · ML · Privacy | [Live](https://neurosense-ai.netlify.app) |
+| 2 | **InternAI** | Smart internship finder platform powered by AI to match candidates with opportunities | AI · React · Node.js · MongoDB | [Live](https://internaii.netlify.app/) |
+| 3 | **Phool — Finding Her** | Beautiful CSS flower animation project showcasing creative frontend development | CSS Art · Animation · Creative | [Live](https://phool-finding-her.netlify.app) |
+| 4 | **EventHub** | Discover local events near you — browse by category and explore community calendars | Events · React · Community | — |
+| 5 | **JeevanSOS V2** | Enhanced healthcare app with 10-minute medicine delivery and emergency response | Healthcare · React · Delivery | [Live](https://emergencys.netlify.app/) |
+| 6 | **Limpio Shop** | Full e-commerce mobile-first experience with product categories and seamless checkout | E-commerce · Mobile · PWA | [Live](https://www.limpios.shop) |
+| 7 | **Rise Blue Media** | Digital marketing and media platform for brand growth and online presence | Marketing · Media · Branding | [Live](https://riseblue.netlify.app/) |
 
 ---
 
-## 6. 🏗️ System Architecture
+## 5. 💪 Skills & Expertise
 
+### Languages & Tools
 ```
-┌──────────────────────────────────────────────────────────────┐
-│                  Frontend — React + Vite + TypeScript        │
-│    ┌─────────────────────┐    ┌────────────────────────┐     │
-│    │  Voice Agent         │    │  WhatsApp Chat UI      │     │
-│    │  (Web Speech API)   │    │  Prescription OCR      │     │
-│    └─────────┬───────────┘    └──────────┬─────────────┘     │
-└──────────────┼──────────────────────────┼────────────────────┘
-               │                          │
-┌──────────────▼──────────────────────────▼────────────────────┐
-│                Backend — FastAPI + Python                     │
-│         ┌────────────────┐  ┌──────────────────┐             │
-│         │  Triage Engine  │  │  OCR Endpoint    │             │
-│         └────────┬───────┘  └─────────┬────────┘             │
-└──────────────────┼─────────────────────┼────────────────────-┘
-                   │                     │
-┌──────────────────▼─────────────────────▼────────────────────┐
-│                    AI Layer                                   │
-│    ┌──────────────────────┐   ┌──────────────────────────┐   │
-│    │  Gemini AI           │   │  Sarvam AI               │   │
-│    │  (Symptom Analysis)  │   │  (Hindi STT + TTS)       │   │
-│    └──────────────────────┘   └──────────────────────────┘   │
-└──────────────────────────────────────────────────────────────┘
+Python · JavaScript · C · Java · HTML/CSS · Tailwind CSS · Git · GitHub · GitLab · Docker
+```
+
+### AI & Machine Learning
+```
+LLMs · LangChain · Hugging Face · AI Agents · n8n Workflows · Google ADK
+Google Cloud DLP · Vertex AI · NLP
+```
+
+### Full Stack & Cloud
+```
+React · Streamlit · Supabase · MongoDB · PostgreSQL
+Google Cloud · AWS · Docker · User Auth · Crypto Payments
+```
+
+### Mobile Development
+```
+Android (Java, Kotlin) · iOS (Swift, SwiftUI) · Flutter · React Native
+Firebase · REST APIs · Push Notifications · App Store & Play Store Deployment
 ```
 
 ---
 
-## 7. 🚀 Getting Started
+## 6. 🎯 Services
+
+| Service | Description |
+|---------|-------------|
+| 💻 **Web Development** | Responsive, scalable web apps with modern technologies and best practices |
+| 📱 **App Design** | Intuitive mobile and web app designs prioritizing UX and engagement |
+| 🎨 **Branding** | Unique brand identities that resonate with your audience |
+| ✨ **UI/UX** | Beautiful, functional interfaces with seamless user experiences |
+
+---
+
+## 7. 🏆 Achievements & Certifications
+
+### Hackathon Wins
+| Achievement | Event |
+|-------------|-------|
+| 🥇 National Finalist | CodeMatrix Genesis Hackathon |
+| 🥈 2nd Runner Up | IIT Jodhpur Ideathon 2026 |
+| 🏅 Top 10 (Rank 4) | ArcticX Winter Hackathon |
+| 🏅 Rank 6 | OpenCode'25 — IIIT Allahabad |
+| 🏅 Finalist | VIT Bhopal Wireframe Submission |
+| 🏅 Participant | IIT Kharagpur DataQuest 2026 |
+| 🏅 Participant | IIT Guwahati Product Expedition |
+| 🏅 Participant | GL Bajaj Agentic AI Hackathon |
+| 🏅 Participant | Adani University Odoo Hackathon |
+| 🏅 Participant | FedEx Smart Hackathon |
+| 🏅 Top Performer | Logic League on Unstop |
+
+### Certifications
+| Certificate | Issuer |
+|-------------|--------|
+| Generative AI | Microsoft × PW Skills |
+| AI Skills Passport | EY × Microsoft |
+| Prompt to Prototype | Google Startup School |
+| Prompt Engineering Bootcamp | Completion Certificate |
+| Data Science Hackathon | Kharagpur |
+
+> 📜 **25+ total certificates** — View all at [nissh.info](https://nissh.info)
+
+---
+
+## 8. 🚀 Getting Started
 
 ### Prerequisites
 
 ```bash
 node >= 18.0.0
-python >= 3.10
-pip
+npm or bun
 ```
 
-### Clone the Repository
+### Clone & Install
 
 ```bash
-git clone https://github.com/Niss54/Saarthi-AI-Triage.git
-cd Saarthi-AI-Triage
-```
+# Clone the repository
+git clone https://github.com/Niss54/portfolio.git
+cd portfolio
 
-### Frontend Setup
-
-```bash
-cd frontend
+# Install dependencies
 npm install
-npm run dev
+# or
+bun install
 ```
 
-### Backend Setup
+### Run Development Server
 
 ```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
+npm run dev
+# or
+bun dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Build for Production
+
+```bash
+npm run build
 ```
 
 ### Environment Variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the root:
 
 ```env
-GEMINI_API_KEY=your_gemini_api_key
-SARVAM_API_KEY=your_sarvam_api_key
-LIVEKIT_API_KEY=your_livekit_api_key
-LIVEKIT_API_SECRET=your_livekit_api_secret
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
-> ⚠️ Never commit your `.env` file. It is already included in `.gitignore`.
+> ⚠️ Never commit your `.env` file. It's already in `.gitignore`.
+
+### Project Structure
+
+```
+portfolio-main/
+├── public/
+│   ├── certificates/       # Certificate images (25+)
+│   ├── resume-nishant-maurya.pdf
+│   └── splash-video.mp4
+├── src/
+│   ├── assets/             # Project images, profile photos
+│   ├── components/         # All UI components
+│   │   ├── ui/             # shadcn/ui + custom base components
+│   │   ├── HeroSection.tsx
+│   │   ├── AboutSection.tsx
+│   │   ├── ProjectsSection.tsx
+│   │   ├── SkillsSection.tsx
+│   │   ├── ServicesSection.tsx
+│   │   ├── CertificationsSection.tsx
+│   │   ├── TestimonialsSection.tsx
+│   │   ├── ContactSection.tsx
+│   │   └── Footer.tsx
+│   ├── data/
+│   │   ├── projects.ts     # All project entries
+│   │   └── certifications.ts  # All certificate entries
+│   ├── pages/
+│   │   ├── Index.tsx       # Home page
+│   │   ├── AIServices.tsx
+│   │   ├── Automation.tsx
+│   │   ├── Blog.tsx
+│   │   └── Services.tsx
+│   └── integrations/
+│       └── supabase/       # DB client & types
+├── package.json
+├── vite.config.ts
+└── tailwind.config.ts
+```
 
 ---
 
-## 8. 📸 Screenshots
+## 9. 🌐 Connect With Me
 
-### OPD Dashboard — Live Queue View
-> Real-time patient queue with severity indicators and department routing
+<div align="center">
 
-### Patient Intake — Voice Mode
-> Hindi voice interface powered by Sarvam AI
+| Platform | Link |
+|----------|------|
+| 🌐 Portfolio | [nissh.info](https://nissh.info) |
+| 💼 LinkedIn | [linkedin.com/in/niss-visuals](https://www.linkedin.com/in/niss-visuals) |
+| 🐙 GitHub | [github.com/Niss54](https://github.com/Niss54) |
+| 📸 Instagram | [bit.ly/3LMyPJM](https://bit.ly/3LMyPJM) |
+| 📘 Facebook | [bit.ly/4pubDys](https://bit.ly/4pubDys) |
+| ▶️ YouTube | [youtube.com/@Niss.visuals](https://www.youtube.com/@Niss.visuals) |
+| 💬 WhatsApp | [Chat Now](http://bit.ly/4oUt1MH) |
+| ✈️ Telegram | [t.me/Nissvisuals](https://t.me/Nissvisuals) |
+| 📞 Phone | +91 88403 01998 |
+| 📧 Email | nishantma05@gmail.com |
 
-### Emergency Protocol
-> Critical patient EMG token generation with priority override
-
----
-
-## 9. 👥 Team
-
-**Team Syntrix** — APL 2025, Healthcare Track
-
-| Member | Role |
-|--------|------|
-| **Nishant Maurya** | Full Stack Lead, AI Integration |
-| *(Add teammates)* | *(Add roles)* |
-
----
-
-## 10. 📄 License
-
-This project was built for **APL 2025 — Healthcare Track** as a competitive hackathon submission.
-
-```
-MIT License — see LICENSE file for details
-```
+</div>
 
 ---
 
 <div align="center">
 
-**Built with ❤️ for KGMU Lucknow — because every second counts.**
+**Built with ❤️ by Nishant Maurya**
 
-[![GitHub](https://img.shields.io/badge/GitHub-Niss54-181717?style=flat-square&logo=github)](https://github.com/Niss54)
-[![Portfolio](https://img.shields.io/badge/Portfolio-nissh.info-blueviolet?style=flat-square)](https://nissh.info)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-niss--visuals-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/niss-visuals)
+*"Let's turn your idea into reality."*
 
-*"Intelligent triage. Zero delay. Every life matters."*
+⭐ **If you like this portfolio, drop a star!** ⭐
 
 </div>
