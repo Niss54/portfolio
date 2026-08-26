@@ -1,6 +1,6 @@
 import { ArrowUp } from "lucide-react";
 import { useState, useEffect } from "react";
-import logo from "@/assets/logo.png";
+const logo = "/logo.png";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 const Footer = () => {

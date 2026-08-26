@@ -2,18 +2,20 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-import SkillsSection from "@/components/SkillsSection";
-import ServicesSection from "@/components/ServicesSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import CertificationsSection from "@/components/CertificationsSection";
-import ContactSection from "@/components/ContactSection";
-import CollaborationBanner from "@/components/CollaborationBanner";
-import Footer from "@/components/Footer";
 import LoadingScreen from "@/components/LoadingScreen";
-import ChatbotWidget from "@/components/ChatbotWidget";
 import SectionLighting from "@/components/SectionLighting";
+import { lazy, Suspense } from "react";
+
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const SkillsSection = lazy(() => import("@/components/SkillsSection"));
+const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const ProjectsSection = lazy(() => import("@/components/ProjectsSection"));
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
+const CertificationsSection = lazy(() => import("@/components/CertificationsSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const CollaborationBanner = lazy(() => import("@/components/CollaborationBanner"));
+const Footer = lazy(() => import("@/components/Footer"));
+const ChatbotWidget = lazy(() => import("@/components/ChatbotWidget"));
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,56 +35,59 @@ const Index = () => {
     }
   }, [isLoading, location.state]);
 
-  if (isLoading) {
-    return <LoadingScreen onComplete={() => setIsLoading(false)} />;
-  }
-
   return (
-    <div className="relative min-h-screen">
-      <Navbar />
+    <>
+      {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+      <div className="relative min-h-screen">
+        <Navbar />
 
-      <div className="relative z-10">
-        <HeroSection />
+        <div className="relative z-10">
+          <HeroSection />
 
         <div className="relative bg-black">
-          <SectionLighting id="about" className="pt-8">
-            <AboutSection />
-          </SectionLighting>
+          <Suspense fallback={<div className="h-32 flex items-center justify-center text-white/50">Loading section...</div>}>
+            <SectionLighting id="about" className="pt-8">
+              <AboutSection />
+            </SectionLighting>
 
-          <SectionLighting id="skills" className="pt-8">
-            <SkillsSection />
-          </SectionLighting>
-          
-          <SectionLighting id="services" className="pt-8">
-            <ServicesSection />
-          </SectionLighting>
-          
-          <SectionLighting id="work" className="pt-8">
-            <ProjectsSection />
-          </SectionLighting>
-          
-          <SectionLighting id="reviews" className="pt-8">
-            <TestimonialsSection mode="preview" />
-          </SectionLighting>
-          
-          <SectionLighting id="certifications" className="pt-8">
-            <CertificationsSection />
-          </SectionLighting>
-          
-          <SectionLighting className="pt-8">
-            <CollaborationBanner />
-          </SectionLighting>
-          
-          <SectionLighting id="contact" className="pt-8">
-            <ContactSection />
-          </SectionLighting>
-          
-          <Footer />
+            <SectionLighting id="skills" className="pt-8">
+              <SkillsSection />
+            </SectionLighting>
+            
+            <SectionLighting id="services" className="pt-8">
+              <ServicesSection />
+            </SectionLighting>
+            
+            <SectionLighting id="work" className="pt-8">
+              <ProjectsSection />
+            </SectionLighting>
+            
+            <SectionLighting id="reviews" className="pt-8">
+              <TestimonialsSection mode="preview" />
+            </SectionLighting>
+            
+            <SectionLighting id="certifications" className="pt-8">
+              <CertificationsSection />
+            </SectionLighting>
+            
+            <SectionLighting className="pt-8">
+              <CollaborationBanner />
+            </SectionLighting>
+            
+            <SectionLighting id="contact" className="pt-8">
+              <ContactSection />
+            </SectionLighting>
+            
+            <Footer />
+          </Suspense>
         </div>
       </div>
 
-      <ChatbotWidget />
+      <Suspense fallback={null}>
+        <ChatbotWidget />
+      </Suspense>
     </div>
+    </>
   );
 };
 

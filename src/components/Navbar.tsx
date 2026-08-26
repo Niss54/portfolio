@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.png";
+const logo = "/logo.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -60,7 +60,7 @@ const Navbar = () => {
         />
         {/* Logo */}
         <button onClick={() => scrollToSection("home")} className="flex items-center gap-2 shrink-0">
-          <img src={logo} alt="Logo" className="h-10 w-auto" />
+          <img src={logo} alt="Logo" className="h-10 w-auto" fetchPriority="high" loading="eager" />
         </button>
 
         {/* Desktop Links */}

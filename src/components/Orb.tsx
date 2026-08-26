@@ -213,7 +213,7 @@ export default function Orb({
 
     function resize() {
       if (!container) return;
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
       const width = container.clientWidth;
       const height = container.clientHeight;
       renderer.setSize(width * dpr, height * dpr);
@@ -290,7 +290,7 @@ export default function Orb({
   return (
     <div ref={ctnDom} className="orb-container">
       <div className="orb-photo-wrap" aria-hidden="true">
-        <img src="/niss.png" alt="Nishant" className="orb-photo" />
+        <img src="/niss.png" alt="Nishant" className="orb-photo" fetchPriority="high" loading="eager" />
       </div>
     </div>
   );

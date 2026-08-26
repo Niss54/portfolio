@@ -42,9 +42,9 @@ const HeroSection = () => {
           cursorSize={56}
           isViscous
           viscous={24}
-          iterationsViscous={18}
-          iterationsPoisson={20}
-          resolution={0.35}
+          iterationsViscous={4}
+          iterationsPoisson={8}
+          resolution={0.25}
           isBounce={false}
           autoDemo
           autoSpeed={0.35}
@@ -81,13 +81,19 @@ const HeroSection = () => {
             </h1>
             
             <div className="flex items-center gap-3 text-2xl md:text-4xl font-semibold">
-              <span className="text-muted-foreground">And I'm</span>
-              <span 
-                className="text-primary glow-text transition-all duration-500"
-                key={currentTitleIndex}
-              >
-                {titles[currentTitleIndex]}
-              </span>
+              <span className="text-muted-foreground whitespace-nowrap">And I'm</span>
+              <div className="grid">
+                {titles.map((title, index) => (
+                  <span 
+                    key={title}
+                    className={`col-start-1 row-start-1 text-primary glow-text transition-opacity duration-500 ${
+                      index === currentTitleIndex ? "opacity-100" : "opacity-0 pointer-events-none"
+                    }`}
+                  >
+                    {title}
+                  </span>
+                ))}
+              </div>
             </div>
 
             <p className="text-lg text-muted-foreground max-w-2xl">
